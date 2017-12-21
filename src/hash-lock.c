@@ -35,10 +35,10 @@
 #include <assert.h>
 
 /** hashing global data */
-unsigned long long hash_rank[16][256];
+u64 hash_rank[16][256];
 
 /** hashing global data */
-unsigned long long hash_move[64][60];
+u64 hash_move[64][60];
 
 /** HashData init value */
 const HashData HASH_DATA_INIT = {0, 0, 0, 0, -SCORE_INF, SCORE_INF, {NOMOVE, NOMOVE}};
@@ -293,7 +293,7 @@ static void data_new(HashData *data, const int date, const int depth, const int 
  * @param score Best score.
  * @param move Best move.
  */
-static void hash_new(Hash *hash, HashLock *lock, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+static void hash_new(Hash *hash, HashLock *lock, const u64 hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	spin_lock(lock);
 	HASH_STATS(if (date == hash->data.date) ++statistics.n_hash_remove;)
@@ -322,7 +322,7 @@ static void hash_new(Hash *hash, HashLock *lock, const unsigned long long hash_c
  * @param upper Upper score bound.
  * @param move Best move.
  */
-void hash_set(Hash *hash, HashLock *lock, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int cost, const int lower, const int upper, const int move)
+void hash_set(Hash *hash, HashLock *lock, const u64 hash_code, const int date, const int depth, const int selectivity, const int cost, const int lower, const int upper, const int move)
 {
 	spin_lock(lock);
 	HASH_STATS(if (date == hash->data.date) ++statistics.n_hash_remove;)
@@ -362,7 +362,7 @@ void hash_set(Hash *hash, HashLock *lock, const unsigned long long hash_code, co
  * @param move Best move.
  * @return true if an entry has been updated, false otherwise.
  */
-static bool hash_update(Hash *hash, HashLock *lock, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+static bool hash_update(Hash *hash, HashLock *lock, const u64 hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	bool ok;
 	HashData *data;
@@ -406,7 +406,7 @@ static bool hash_update(Hash *hash, HashLock *lock, const unsigned long long has
  * @param move Best move.
  * @return true if an entry has been replaced, false otherwise.
  */
-static bool hash_replace(Hash *hash, HashLock *lock, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+static bool hash_replace(Hash *hash, HashLock *lock, const u64 hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	bool ok;
 	
@@ -435,7 +435,7 @@ static bool hash_replace(Hash *hash, HashLock *lock, const unsigned long long ha
  * @param upper Upper score bound.
  * @param move Best move.
  */
-static bool hash_reset(Hash *hash, HashLock *lock, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int lower, const int upper, const int move)
+static bool hash_reset(Hash *hash, HashLock *lock, const u64 hash_code, const int date, const int depth, const int selectivity, const int lower, const int upper, const int move)
 {
 	bool ok;
 	HashData *data;
@@ -483,7 +483,7 @@ static bool hash_reset(Hash *hash, HashLock *lock, const unsigned long long hash
  * @param upper Beta bound.
  * @param move best move.
  */
-void hash_feed(HashTable *hash_table, const unsigned long long hash_code, const int depth, const int selectivity, const int lower, const int upper, const int move)
+void hash_feed(HashTable *hash_table, const u64 hash_code, const int depth, const int selectivity, const int lower, const int upper, const int move)
 {
 	Hash *hash, *worst;
 	HashLock *lock, *w_lock; 
@@ -535,7 +535,7 @@ void hash_feed(HashTable *hash_table, const unsigned long long hash_code, const 
  * @param score      Best score found.
  * @param move       Best move found.
  */
-void hash_store(HashTable *hash_table, const unsigned long long hash_code, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+void hash_store(HashTable *hash_table, const u64 hash_code, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	register int i;
 	Hash *worst, *hash;
@@ -572,7 +572,7 @@ void hash_store(HashTable *hash_table, const unsigned long long hash_code, const
  * @param score      Best score found.
  * @param move       Best move found.
  */
-void hash_force(HashTable *hash_table, const unsigned long long hash_code, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+void hash_force(HashTable *hash_table, const u64 hash_code, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	register int i;
 	Hash *worst, *hash;
@@ -602,7 +602,7 @@ void hash_force(HashTable *hash_table, const unsigned long long hash_code, const
  * @param data Output hash data.
  * @return True the board was found, false otherwise.
  */
-bool hash_get(HashTable *hash_table, const unsigned long long hash_code, HashData *data)
+bool hash_get(HashTable *hash_table, const u64 hash_code, HashData *data)
 {
 	register int i;
 	const Hash *hash;
@@ -635,7 +635,7 @@ bool hash_get(HashTable *hash_table, const unsigned long long hash_code, HashDat
  * @param hash_code Hash code of an othello board.
  * @param move Move to exclude.
  */
-void hash_exclude_move(HashTable *hash_table, const unsigned long long hash_code, const int move)
+void hash_exclude_move(HashTable *hash_table, const u64 hash_code, const int move)
 {
 	register int i;
 	Hash *hash;

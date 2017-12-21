@@ -54,10 +54,10 @@ typedef struct Book {
  * @brief Game statistics
  */
 typedef struct GameStats {
- 	unsigned long long n_wins;       /**< game win count */
-	unsigned long long n_draws;      /**< game draw count */
-	unsigned long long n_losses;     /**< game loss count */
-	unsigned long long n_lines;      /**< unterminated line count */
+ 	u64 n_wins;       /**< game win count */
+	u64 n_draws;      /**< game draw count */
+	u64 n_losses;     /**< game loss count */
+	u64 n_lines;      /**< unterminated line count */
 } GameStats;
 
 void book_init(Book*);

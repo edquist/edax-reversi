@@ -79,7 +79,7 @@ int search_eval_1(Search *search, const int alpha, int beta)
 	register int score, bestscore;
 	const Board *board = search->board;
 	Eval *eval = search->eval;
-	unsigned long long moves = get_moves(board->player, board->opponent);
+	u64 moves = get_moves(board->player, board->opponent);
 	int *f;
 
 	SEARCH_STATS(++statistics.n_search_eval_1);
@@ -150,7 +150,7 @@ int search_eval_2(Search *search, int alpha, const int beta)
 	SquareList *empty;
 	Move move[1];
 	const Board *board = search->board;
-	const unsigned long long moves = get_moves(board->player, board->opponent);
+	const u64 moves = get_moves(board->player, board->opponent);
 
 	SEARCH_STATS(++statistics.n_search_eval_2);
 	SEARCH_UPDATE_INTERNAL_NODES();
@@ -300,7 +300,7 @@ static bool search_probcut(Search *search, const int alpha, const int depth, Nod
 int NWS_shallow(Search *search, const int alpha, int depth, HashTable *hash_table)
 {
 	int score;
-	unsigned long long hash_code;
+	u64 hash_code;
 	const int beta = alpha + 1;
 	HashData hash_data[1];
 	Board *board = search->board;
@@ -382,7 +382,7 @@ int PVS_shallow(Search *search, int alpha, int beta, int depth)
 {
 	int score;
 	HashTable *hash_table = search->shallow_table;
-	unsigned long long hash_code;
+	u64 hash_code;
 	HashData hash_data[1];
 	Board *board = search->board;
 	MoveList movelist[1];
@@ -475,7 +475,7 @@ int NWS_midgame(Search *search, const int alpha, int depth, Node *parent)
 	int score;
 	HashTable *hash_table = search->hash_table;
 	HashTable *pv_table = search->pv_table;
-	unsigned long long hash_code;
+	u64 hash_code;
 	const int beta = alpha + 1;
 	HashData hash_data[1];
 	Board *board = search->board;
@@ -587,7 +587,7 @@ int PVS_midgame(Search *search, const int alpha, const int beta, int depth, Node
 	// declaration
 	HashTable *hash_table = search->hash_table;
 	HashTable *pv_table = search->pv_table;
-	unsigned long long hash_code;
+	u64 hash_code;
 	HashData hash_data[1];
 	Board *board = search->board;
 	MoveList movelist[1];

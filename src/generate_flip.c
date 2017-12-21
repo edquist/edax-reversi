@@ -21,7 +21,7 @@
 #define MERGE_DIAGONALS 3
 
 // usefull type
-typedef unsigned long long uint64;
+typedef u64 uint64;
 typedef unsigned char uint8;
 
 // usefull constant
@@ -492,7 +492,7 @@ char* d_name(const int x) {
 	return s;
 }
 
-// init unsigned long long
+// init u64
 void init_index_to_bitarray() {
 	int i, n;
 	for (n = 0; n < 64; ++n) {
@@ -659,7 +659,7 @@ void init_index_to_bitarray() {
 void print_bitarray_(FILE *f, uint64 array[], int size, char *name) {
 	int n;
 	fprintf(f, "/** conversion from an 8-bit line to the %.2s-%.2s-%.2s line */\n", name, name + 2, name + 4);
-	fprintf(f, "unsigned long long %s[%d] = {\n", name, size);
+	fprintf(f, "u64 %s[%d] = {\n", name, size);
 	for (n = 0; n < size; ++n) {
 		if (n % 8 == 0) fprintf(f, "\t\t");
 		fprintf(f, "0x%016llxULL,", array[n]);
@@ -883,7 +883,7 @@ int main() {
 		fprintf(f, " * @param O opponent's disc pattern.\n");
 		fprintf(f, " * @return flipped disc pattern.\n");
 		fprintf(f, " */\n");
-		fprintf(f, "static unsigned long long flip_%s(const unsigned long long P, const unsigned long long O)\n{\n", s);
+		fprintf(f, "static u64 flip_%s(const u64 P, const u64 O)\n{\n", s);
 		fprintf(f, "\tregister int index_h, index_v");
 		if (merge_diagonals[n] & MERGE_DIAGONALS) fprintf(f, ", index_d");
 		else {
@@ -891,7 +891,7 @@ int main() {
 			if (has_diagonal_d9[n]) fprintf(f, ", index_d9");
 		}
 		fprintf(f, ";\n");
-		fprintf(f, "\tregister unsigned long long flipped;\n");
+		fprintf(f, "\tregister u64 flipped;\n");
 		fprintf(f, "\n");
 
 		// start by vertical because the first index of OUTFLANK & FLIPPED differ from the other direction
@@ -901,7 +901,7 @@ int main() {
 
 		if (y) fprintf(f, "\tindex_h = OUTFLANK[%d][(O >> %d) & 0x3f] & (P >> %d);\n", flip_index_h(n), 1 + y * 8, y * 8);
 		else fprintf(f, "\tindex_h = OUTFLANK[%d][(O >> 1) & 0x3f] & P;\n", flip_index_h(n));
-		fprintf(f, "\tflipped |= ((unsigned long long) FLIPPED[%d][index_h])", flip_index_h(n));
+		fprintf(f, "\tflipped |= ((u64) FLIPPED[%d][index_h])", flip_index_h(n));
 		fprintf(f," << %d", y * 8 + 1);
 		fprintf(f, ";\n\n");
 
@@ -964,14 +964,14 @@ int main() {
 	fprintf(f, " * @param O opponent's disc pattern.\n");
  	fprintf(f, " * @return flipped disc pattern.\n");
 	fprintf(f, " */\n");
-	fprintf(f, "static unsigned long long flip_pass(const unsigned long long P, const unsigned long long O)\n{\n");
+	fprintf(f, "static u64 flip_pass(const u64 P, const u64 O)\n{\n");
 	fprintf(f, "\t(void) P; // useless code to shut-up compiler warning\n");
 	fprintf(f, "\t(void) O;\n");
 	fprintf(f, "\treturn 0;\n");
 	fprintf(f, "}\n\n\n");
 
 	fprintf(f, "/** Array of functions to compute flipped discs */\n");
-	fprintf(f, "unsigned long long (*flip[])(const unsigned long long, const unsigned long long) = {\n");
+	fprintf(f, "u64 (*flip[])(const u64, const u64) = {\n");
 	for (n = 0; n < 64; n++) {
 		x = n % 8; s[0] = 'A' + x;
 		y = n / 8; s[1] = '1' + y;

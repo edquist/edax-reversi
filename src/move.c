@@ -252,8 +252,8 @@ static void move_evaluate(Move *move, Search *search, const HashData *hash_data,
 void tune_move_evaluate(Search *search, const char *filename, const char *w_name)
 {
 	int best_w;
-	unsigned long long best_n_nodes;
-	unsigned long long n_nodes, t;
+	u64 best_n_nodes;
+	u64 n_nodes, t;
 	int i, *w;
 
 	if (strcmp(w_name, "w_eval") == 0) w = &w_eval;
@@ -299,7 +299,7 @@ int movelist_get_moves(MoveList *movelist, const Board *board)
 {
 	Move *previous = movelist->move;
 	Move *move = movelist->move + 1;
-	unsigned long long moves = get_moves(board->player, board->opponent);
+	u64 moves = get_moves(board->player, board->opponent);
 	int x;
 
 	foreach_bit(x, moves) {
@@ -746,7 +746,7 @@ bool movehash_append(MoveHash *hash, const Board *b, const int x)
 {
 	Board u;
 	int y;
-	unsigned long long h;
+	u64 h;
 
 	y = symetry(x, board_unique(b, &u));
 	h = board_get_hash_code(&u);

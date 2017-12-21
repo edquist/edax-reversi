@@ -80,11 +80,11 @@ bool is_stdin_keyboard(void);
  * random
  */
 typedef struct Random {
-	unsigned long long x;
+	u64 x;
 } Random;
 
-unsigned long long random_get(Random*);
-void random_seed(Random*, const unsigned long long);
+u64 random_get(Random*);
+void random_seed(Random*, const u64);
 
 /*
  * Usefull macros
@@ -320,7 +320,7 @@ void thread_set_cpu(Thread, int);
 Thread thread_self(void);
 
 /** atomic addition */
-static inline void atomic_add(volatile unsigned long long *value, long long i)
+static inline void atomic_add(volatile u64 *value, long long i)
 {
 #if defined(USE_GAS_X64)
   __asm__ __volatile__("lock xaddq %1, %0":"=m"(*value) :"r"(i), "m" (*value));

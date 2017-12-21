@@ -319,8 +319,8 @@ static bool position_read(Position *position, FILE *f)
 	int i;
 	int r;
 
-	r  = fread(&position->board->player, sizeof (unsigned long long), 1, f);
-	r += fread(&position->board->opponent, sizeof (unsigned long long), 1, f);
+	r  = fread(&position->board->player, sizeof (u64), 1, f);
+	r += fread(&position->board->opponent, sizeof (u64), 1, f);
 
 	r += fread(&position->n_wins, sizeof (unsigned int), 1, f);
 	r += fread(&position->n_draws, sizeof (unsigned int), 1, f);
@@ -417,8 +417,8 @@ static bool position_write(const Position *position, FILE* f)
 	int i;
 	int r;
 
-	r  = fwrite(&position->board->player, sizeof (unsigned long long), 1, f);
-	r += fwrite(&position->board->opponent, sizeof (unsigned long long), 1, f);
+	r  = fwrite(&position->board->player, sizeof (u64), 1, f);
+	r += fwrite(&position->board->opponent, sizeof (u64), 1, f);
 
 	r += fwrite(&position->n_wins, sizeof (unsigned int), 1, f);
 	r += fwrite(&position->n_draws, sizeof (unsigned int), 1, f);
@@ -744,7 +744,7 @@ static void position_search(Position *position, Book *book)
 static void position_link(Position *position, Book *book)
 {
 	int x;
-	unsigned long long moves = get_moves(position->board->player, position->board->opponent);
+	u64 moves = get_moves(position->board->player, position->board->opponent);
 	Board next[1];
 	Link link[1];
 	Position *child;
@@ -1040,7 +1040,7 @@ static void position_enhance(Position *position, Book *book)
 static void board_feed_hash(Board *board, const Book *book, Search *search, const bool is_pv)
 {
 	Position *position;
-	const unsigned long long hash_code = board_get_hash_code(board);
+	const u64 hash_code = board_get_hash_code(board);
 	MoveList movelist[1];
 	Move *m;
 
@@ -1305,7 +1305,7 @@ static Position* book_probe(const Book *book, const Board *board)
  */
 static void book_add(Book *book, const Position *p)
 {
-	const unsigned long long i = board_get_hash_code(p->board) & (book->n - 1);
+	const u64 i = board_get_hash_code(p->board) & (book->n - 1);
 
 	if (position_array_add(book->array + i, p)) {
 		++book->n_nodes;
@@ -1321,7 +1321,7 @@ static void book_add(Book *book, const Position *p)
  */
 static void book_remove(Book *book, const Position *p)
 {
-	const unsigned long long i = board_get_hash_code(p->board) & (book->n - 1);
+	const u64 i = board_get_hash_code(p->board) & (book->n - 1);
 
 	if (position_array_remove(book->array + i, p)) {
 		--book->n_nodes;
@@ -1713,7 +1713,7 @@ void book_deepen(Book *book)
 	PositionArray *a;
 	Position *p;
 	int i = 0;
-	unsigned long long t = real_clock();
+	u64 t = real_clock();
 	char file[FILENAME_MAX + 1];
 	
 	file_add_ext(options.book_file, ".dep", file);
@@ -1749,7 +1749,7 @@ void book_correct_solved(Book *book)
 	PositionArray *a;
 	Position *p;
 	int i = 0;
-	unsigned long long t = real_clock();
+	u64 t = real_clock();
 	char file[FILENAME_MAX + 1];
 	Link old_leaf;
 	int n_error = 0;
@@ -1797,7 +1797,7 @@ static void book_expand(Book *book, const char *action, const char *tmp_file)
 	PositionArray *a;
 	Position *p;
 	int i = 0, k;
-	unsigned long long t = real_clock();
+	u64 t = real_clock();
 
 	bprint("%s...\r", action);
 	
@@ -2072,9 +2072,9 @@ void book_info(Book *book)
 {
 	PositionArray *a;
 	Position *p;
-	unsigned long long n_links = 0;
-	unsigned long long n_leaves = 0;
-	unsigned long long n_level[61] = {0};
+	u64 n_links = 0;
+	u64 n_leaves = 0;
+	u64 n_level[61] = {0};
 	int min_array = book->n_nodes, max_array = 0;
 	int i;
 
@@ -2116,7 +2116,7 @@ void book_show(Book *book, Board *board)
 {
 	GameStats stat = {0,0,0,0};
 	Position *position = book_probe(book, board);
-	unsigned long long n_games;
+	u64 n_games;
 
 	if (position) {
 		position_show(position, board, stdout);
@@ -2340,9 +2340,9 @@ void book_add_base(Book *book, const Base *base)
 }
 
 typedef struct BookCheckGame {
-	unsigned long long missing;
-	unsigned long long good;
-	unsigned long long bad;
+	u64 missing;
+	u64 good;
+	u64 bad;
 } BookCheckGame;
 
 /**
@@ -2534,9 +2534,9 @@ void book_stats(Book *book)
 	PositionArray *a;
 	Position *p;
 	int i;
-	unsigned long long n_hash[256];
-	unsigned long long n_pos[61], n_leaf[61], n_link[61], n_terminal[61];
-	unsigned long long n_score[129];
+	u64 n_hash[256];
+	u64 n_pos[61], n_leaf[61], n_link[61], n_terminal[61];
+	u64 n_score[129];
 
 	printf("\n\nBook statistics:\n");
 

@@ -34,8 +34,8 @@ typedef struct Task {
 	struct Node *node;           /**< node splitted */
 	struct Move *move;           /**< move to search */
 	Thread thread;               /**< thread */
-	unsigned long long n_calls;  /**< call counter */
-	unsigned long long n_nodes;  /**< nodes counter */
+	u64 n_calls;  /**< call counter */
+	u64 n_nodes;  /**< nodes counter */
 	Lock lock;                   /**< lock */
 	Condition cond;              /**< condition */
 	struct TaskStack *container; /**< link to its container */
@@ -106,7 +106,7 @@ void task_stack_stop(TaskStack*, const Stop);
 Task* task_stack_get_idle_task(TaskStack*);
 void task_stack_put_idle_task(TaskStack*, Task*);
 void task_stack_clear(TaskStack*);
-unsigned long long task_stack_count_nodes(TaskStack*);
+u64 task_stack_count_nodes(TaskStack*);
 
 #endif
 

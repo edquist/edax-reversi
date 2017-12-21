@@ -35,7 +35,7 @@ void pv_debug(Search *search, const Move *bestmove, FILE *f)
 	Board board[1];
 	Move move[1];
 	int x;
-	unsigned long long hash_code;
+	u64 hash_code;
 	HashData hash_data[1];
 	char s[4];
 	int player = BLACK;
@@ -85,7 +85,7 @@ bool is_pv_ok(Search *search, int bestmove, int search_depth)
 	Board board[1];
 	Move move[1];
 	int x;
-	unsigned long long hash_code;
+	u64 hash_code;
 	HashData hash_data[1];
 
 	*board = *search->board;
@@ -153,7 +153,7 @@ void record_best_move(Search *search, const Board *init_board, const Move *bestm
 	Move move[1];
 	Result *result = search->result;
 	int x;
-	unsigned long long hash_code;
+	u64 hash_code;
 	HashData hash_data[1];
 	bool has_changed;
 	Bound *bound = result->bound + bestmove->x;
@@ -306,7 +306,7 @@ int search_get_pv_cost(Search *search)
 	HashTable *pv_table = search->pv_table;
 	HashTable *shallow_table = search->shallow_table;
 	HashData hash_data[1];
-	const unsigned long long hash_code = board_get_hash_code(search->board);
+	const u64 hash_code = board_get_hash_code(search->board);
 
 	if ((hash_get(pv_table, search->board, hash_code, hash_data) || hash_get(hash_table, search->board, hash_code, hash_data) || hash_get(shallow_table, search->board, hash_code, hash_data))) {
 		return writeable_level(hash_data);
@@ -335,7 +335,7 @@ int PVS_root(Search *search, const int alpha, const int beta, const int depth)
 	Move *move;
 	Node node[1];
 	long long cost = -search_count_nodes(search);
-	unsigned long long hash_code;
+	u64 hash_code;
 	assert(alpha < beta);
 	assert(SCORE_MIN <= alpha && alpha <= SCORE_MAX);
 	assert(SCORE_MIN <= beta && beta <= SCORE_MAX);
@@ -574,7 +574,7 @@ static bool get_last_level(Search *search, int *depth, int *selectivity)
 	int i, d, s, x;
 	Board board[1];
 	Move move[1];
-	unsigned long long hash_code;
+	u64 hash_code;
 	HashData hash_data[1];
 	
 

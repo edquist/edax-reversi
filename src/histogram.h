@@ -12,10 +12,10 @@
 #define EDAX_HISTOGRAM_H
 
 /* declaration */
-void histogram_init(unsigned long long h[129][65]);
-void histogram_print(unsigned long long h[129][65]);
-void histogram_stats(unsigned long long h[129][65]);
-void histogram_to_ppm(const char *file, unsigned long long histogram[129][65]);
+void histogram_init(u64 h[129][65]);
+void histogram_print(u64 h[129][65]);
+void histogram_stats(u64 h[129][65]);
+void histogram_to_ppm(const char *file, u64 histogram[129][65]);
 
 #endif
 

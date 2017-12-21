@@ -59,59 +59,59 @@
 
 /** \struct Statistics */
 typedef struct Statistics {
-	unsigned long long n_nodes;
-	unsigned long long n_task_nodes[MAX_THREADS];
-	unsigned long long n_task[MAX_THREADS];
-	unsigned long long n_parallel_nodes;
+	u64 n_nodes;
+	u64 n_task_nodes[MAX_THREADS];
+	u64 n_task[MAX_THREADS];
+	u64 n_parallel_nodes;
 
-	unsigned long long n_hash_update;
-	unsigned long long n_hash_upgrade;
-	unsigned long long n_hash_new;
-	unsigned long long n_hash_remove;
-	unsigned long long n_hash_search;
-	unsigned long long n_hash_found;
-	unsigned long long n_hash_collision;
-	unsigned long long n_hash_n;
+	u64 n_hash_update;
+	u64 n_hash_upgrade;
+	u64 n_hash_new;
+	u64 n_hash_remove;
+	u64 n_hash_search;
+	u64 n_hash_found;
+	u64 n_hash_collision;
+	u64 n_hash_n;
 
-	unsigned long long n_PVS_root;
-	unsigned long long n_PVS_midgame;
-	unsigned long long n_NWS_midgame;
-	unsigned long long n_NWS_endgame;
-	unsigned long long n_PVS_shallow;
-	unsigned long long n_NWS_shallow;
-	unsigned long long n_search_solve;
-	unsigned long long n_search_solve_0;
-	unsigned long long n_board_solve_2;
-	unsigned long long n_search_solve_3;
-	unsigned long long n_search_solve_4;
-	unsigned long long n_search_eval_0;
-	unsigned long long n_search_eval_1;
-	unsigned long long n_search_eval_2;
-	unsigned long long n_cut_at_move_number[MAX_MOVE];
-	unsigned long long n_nocut_at_move_number[MAX_MOVE];
-	unsigned long long n_best_at_move_number[MAX_MOVE];
-	unsigned long long n_move_number[MAX_MOVE];
+	u64 n_PVS_root;
+	u64 n_PVS_midgame;
+	u64 n_NWS_midgame;
+	u64 n_NWS_endgame;
+	u64 n_PVS_shallow;
+	u64 n_NWS_shallow;
+	u64 n_search_solve;
+	u64 n_search_solve_0;
+	u64 n_board_solve_2;
+	u64 n_search_solve_3;
+	u64 n_search_solve_4;
+	u64 n_search_eval_0;
+	u64 n_search_eval_1;
+	u64 n_search_eval_2;
+	u64 n_cut_at_move_number[MAX_MOVE];
+	u64 n_nocut_at_move_number[MAX_MOVE];
+	u64 n_best_at_move_number[MAX_MOVE];
+	u64 n_move_number[MAX_MOVE];
 
-	unsigned long long n_split_try;
-	unsigned long long n_split_success;
-	unsigned long long n_master_helper;
-	unsigned long long n_waited_slave;
-	unsigned long long n_stopped_slave;
-	unsigned long long n_stopped_master;
-	unsigned long long n_wake_up;
+	u64 n_split_try;
+	u64 n_split_success;
+	u64 n_master_helper;
+	u64 n_waited_slave;
+	u64 n_stopped_slave;
+	u64 n_stopped_master;
+	u64 n_wake_up;
 
-	unsigned long long n_hash_try, n_hash_low_cutoff, n_hash_high_cutoff;
-	unsigned long long n_stability_try, n_stability_low_cutoff;
-	unsigned long long n_probcut_try;
-	unsigned long long n_probcut_low_try, n_probcut_low_cutoff;
-	unsigned long long n_probcut_high_try, n_probcut_high_cutoff;
-	unsigned long long n_etc_try, n_etc_high_cutoff, n_esc_high_cutoff;
+	u64 n_hash_try, n_hash_low_cutoff, n_hash_high_cutoff;
+	u64 n_stability_try, n_stability_low_cutoff;
+	u64 n_probcut_try;
+	u64 n_probcut_low_try, n_probcut_low_cutoff;
+	u64 n_probcut_high_try, n_probcut_high_cutoff;
+	u64 n_etc_try, n_etc_high_cutoff, n_esc_high_cutoff;
 
-	unsigned long long n_played_square[BOARD_SIZE][10];
-	unsigned long long n_good_square[BOARD_SIZE][10];
+	u64 n_played_square[BOARD_SIZE][10];
+	u64 n_good_square[BOARD_SIZE][10];
 
-	unsigned long long n_NWS_candidate;
-	unsigned long long n_NWS_bad_candidate;
+	u64 n_NWS_candidate;
+	u64 n_NWS_bad_candidate;
 
 } Statistics;
 

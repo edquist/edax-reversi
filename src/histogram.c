@@ -18,7 +18,7 @@
 #define RCD 0.5
 #endif
 
-void histogram_init(unsigned long long h[129][65])
+void histogram_init(u64 h[129][65])
 {
 	int i, j;
 
@@ -27,10 +27,10 @@ void histogram_init(unsigned long long h[129][65])
 		h[i][j] = 0;
 }
 
-void histogram_print(unsigned long long h[129][65]) 
+void histogram_print(u64 h[129][65]) 
 {
 	int i, j;
-	unsigned long long n, N;
+	u64 n, N;
 	double x, y, s, s2;
 	double mean[65], variance[65], median[65];
 
@@ -100,7 +100,7 @@ void histogram_print(unsigned long long h[129][65])
 	printf("precision"); for (j = 0; j < 65; ++j) {x = (2*j - 64) - mean[j]; printf("; %.2f", sqrt(variance[j] - x * x));} printf("\n");
 }
 
-void histogram_stats(unsigned long long h[129][65])
+void histogram_stats(u64 h[129][65])
 {
 	double y[65], x[129];
 	double m_x, m_y, s_x, s_y, s_xy;
@@ -153,11 +153,11 @@ void histogram_stats(unsigned long long h[129][65])
 	printf("\n");
 }
 
-void histogram_to_ppm(const char *file, unsigned long long histogram[129][65])
+void histogram_to_ppm(const char *file, u64 histogram[129][65])
 {
 	FILE *f;
 	int i, j, i_k, j_k, v;
-	unsigned long long max;
+	u64 max;
 	double w;
 	unsigned char r[256], g[256], b[256];
 

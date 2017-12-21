@@ -413,7 +413,7 @@ void engine_free(void *v)
 
 void feed_all_hash_table(Search *search, Board *board, const int depth, const int selectivity, const int lower, const int upper, const int move)
 {
-	const unsigned long long hash_code = board_get_hash_code(board);
+	const u64 hash_code = board_get_hash_code(board);
 
 	hash_feed(search->hash_table, board, hash_code, depth, selectivity, lower, upper, move);
 	hash_feed(search->pv_table, board, hash_code, depth, selectivity, lower, upper, move);	
@@ -528,7 +528,7 @@ static bool skip_search(Engine *engine, int *old_score)
 	int beta = options.beta;
 	Bound *bound;
 	char s[4], b[80];
-	const unsigned long long hash_code = board_get_hash_code(board);
+	const u64 hash_code = board_get_hash_code(board);
 	
 	*old_score = 0;
 	

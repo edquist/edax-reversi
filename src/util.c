@@ -1040,12 +1040,12 @@ int get_cpu_number(void)
  * @param random Pseudo-Random generator state.
  * @return a 64-bits pseudo-random unsigned int integer.
  */
-unsigned long long random_get(Random *random)
+u64 random_get(Random *random)
 {
-	const unsigned long long MASK48 = 0xFFFFFFFFFFFFull;
-	const unsigned long long A = 0x5DEECE66Dull;
-	const unsigned long long B = 0xBull;
-	register unsigned long long r;
+	const u64 MASK48 = 0xFFFFFFFFFFFFull;
+	const u64 A = 0x5DEECE66Dull;
+	const u64 B = 0xBull;
+	register u64 r;
 
 	random->x = ((A * random->x + B) & MASK48);
 	r = random->x >> 16;
@@ -1059,8 +1059,8 @@ unsigned long long random_get(Random *random)
  * @param random Pseudo-Random generator state.
  * @param seed a 64-bits integer used as seed.
  */
-void random_seed(Random *random, const unsigned long long seed)
+void random_seed(Random *random, const u64 seed)
 {
-	const unsigned long long MASK48 = 0xFFFFFFFFFFFFull;
+	const u64 MASK48 = 0xFFFFFFFFFFFFull;
 	random->x = (seed & MASK48);
 }

@@ -20,7 +20,7 @@ void quick_count_games(const struct Board*, const int, const int);
 void count_positions(const struct Board*, const int, const int);
 void count_shapes(const struct Board*, const int, const int);
 void estimate_games(const struct Board*, const long long);
-void seek_highest_mobility(const struct Board*, const unsigned long long);
+void seek_highest_mobility(const struct Board*, const u64);
 bool seek_position(const struct Board*, const struct Board*, struct Line*);
 
 /** HashTable of positions */

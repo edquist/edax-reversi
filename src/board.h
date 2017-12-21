@@ -18,7 +18,7 @@
 
 /** Board : board representation */
 typedef struct Board {
-	unsigned long long player, opponent;     /**< bitboard representation */
+	u64 player, opponent;     /**< bitboard representation */
 } Board;
 
 struct Move;
@@ -36,15 +36,15 @@ void board_check(const Board*);
 void board_rand(Board*, int, struct Random*);
 
 int board_count_last_flips(const Board*, const int);
-unsigned long long board_get_move(const Board*, const int, struct Move*);
+u64 board_get_move(const Board*, const int, struct Move*);
 bool board_check_move(const Board*, struct Move*);
 void board_swap_players(Board*);
 void board_update(Board*, const struct Move*);
 void board_restore(Board*, const struct Move*);
 void board_pass(Board*);
-unsigned long long board_next(const Board*, const int, Board*);
-unsigned long long board_pass_next(const Board*, const int, Board*);
-unsigned long long board_get_hash_code(const Board*);
+u64 board_next(const Board*, const int, Board*);
+u64 board_pass_next(const Board*, const int, Board*);
+u64 board_get_hash_code(const Board*);
 int board_get_square_color(const Board*, const int);
 bool board_is_occupied(const Board*, const int);
 void board_print(const Board*, const int, FILE*);
@@ -55,19 +55,19 @@ bool board_is_pass(const Board*);
 bool board_is_game_over(const Board*);
 int board_count_empties(const Board *board);
 
-int count_last_flip(const int, const unsigned long long);
-extern unsigned long long (*flip[BOARD_SIZE + 2])(const unsigned long long, const unsigned long long);
-unsigned long long get_moves(const unsigned long long, const unsigned long long);
-bool can_move(const unsigned long long, const unsigned long long);
-unsigned long long get_moves_6x6(const unsigned long long, const unsigned long long);
-bool can_move_6x6(const unsigned long long, const unsigned long long);
-int get_mobility(const unsigned long long, const unsigned long long);
-int get_weighted_mobility(const unsigned long long, const unsigned long long);
-int get_potential_mobility(const unsigned long long, const unsigned long long);
+int count_last_flip(const int, const u64);
+extern u64 (*flip[BOARD_SIZE + 2])(const u64, const u64);
+u64 get_moves(const u64, const u64);
+bool can_move(const u64, const u64);
+u64 get_moves_6x6(const u64, const u64);
+bool can_move_6x6(const u64, const u64);
+int get_mobility(const u64, const u64);
+int get_weighted_mobility(const u64, const u64);
+int get_potential_mobility(const u64, const u64);
 void edge_stability_init(void);
-int get_stability(const unsigned long long, const unsigned long long);
-int get_edge_stability(const unsigned long long, const unsigned long long);
-int get_corner_stability(const unsigned long long);
+int get_stability(const u64, const u64);
+int get_edge_stability(const u64, const u64);
+int get_corner_stability(const u64);
 
 #endif
 

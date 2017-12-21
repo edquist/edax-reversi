@@ -12,10 +12,10 @@
 
 #ifndef NDEBUG
 
-unsigned long long flip_slow(const unsigned long long P, const unsigned long long O, const int x0)
+u64 flip_slow(const u64 P, const u64 O, const int x0)
 {
 	int x, d, dir[8] = {-9,-8,-7,-1,1,7,8,9};
-	const unsigned long long edge[8] = {
+	const u64 edge[8] = {
 		0x01010101010101ffull,
 		0x00000000000000ffull,
 		0x80808080808080ffull,
@@ -25,7 +25,7 @@ unsigned long long flip_slow(const unsigned long long P, const unsigned long lon
 		0xff00000000000000ull,
 		0xff80808080808080ull
 	};
-	unsigned long long flipped, f;
+	u64 flipped, f;
 
 	if (x0 == PASS) return 0;
 
@@ -42,7 +42,7 @@ unsigned long long flip_slow(const unsigned long long P, const unsigned long lon
 	return flipped;
 }
 
-bool test_generator(const unsigned long long flipped, const unsigned long long P, const unsigned long long O, const int x0)
+bool test_generator(const u64 flipped, const u64 P, const u64 O, const int x0)
 {
 	if (flipped != flip_slow(P, O, x0)) {
 		Board b[1];

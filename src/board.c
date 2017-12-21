@@ -56,7 +56,7 @@
 static unsigned char edge_stability[256][256];
 
 /** conversion from an 8-bit line to the A1-A8 line */
-static const unsigned long long A1_A8[256] = {
+static const u64 A1_A8[256] = {
 	0x0000000000000000ULL, 0x0000000000000001ULL, 0x0000000000000100ULL, 0x0000000000000101ULL, 0x0000000000010000ULL, 0x0000000000010001ULL, 0x0000000000010100ULL, 0x0000000000010101ULL,
 	0x0000000001000000ULL, 0x0000000001000001ULL, 0x0000000001000100ULL, 0x0000000001000101ULL, 0x0000000001010000ULL, 0x0000000001010001ULL, 0x0000000001010100ULL, 0x0000000001010101ULL,
 	0x0000000100000000ULL, 0x0000000100000001ULL, 0x0000000100000100ULL, 0x0000000100000101ULL, 0x0000000100010000ULL, 0x0000000100010001ULL, 0x0000000100010100ULL, 0x0000000100010101ULL,
@@ -92,7 +92,7 @@ static const unsigned long long A1_A8[256] = {
 };
 
 /** conversion from an 8-bit line to the H1-H8 line */
-static const unsigned long long H1_H8[256] = {
+static const u64 H1_H8[256] = {
 	0x0000000000000000ULL, 0x0000000000000080ULL, 0x0000000000008000ULL, 0x0000000000008080ULL, 0x0000000000800000ULL, 0x0000000000800080ULL, 0x0000000000808000ULL, 0x0000000000808080ULL,
 	0x0000000080000000ULL, 0x0000000080000080ULL, 0x0000000080008000ULL, 0x0000000080008080ULL, 0x0000000080800000ULL, 0x0000000080800080ULL, 0x0000000080808000ULL, 0x0000000080808080ULL,
 	0x0000008000000000ULL, 0x0000008000000080ULL, 0x0000008000008000ULL, 0x0000008000008080ULL, 0x0000008000800000ULL, 0x0000008000800080ULL, 0x0000008000808000ULL, 0x0000008000808080ULL,
@@ -136,7 +136,7 @@ static const unsigned long long H1_H8[256] = {
  */
 void board_swap_players(Board *board)
 {
-	const unsigned long long tmp = board->player;
+	const u64 tmp = board->player;
 	board->player = board->opponent;
 	board->opponent = tmp;
 }
@@ -318,8 +318,8 @@ bool board_equal(const Board *b1, const Board *b2)
  */
 void board_symetry(const Board *board, const int s, Board *sym)
 {
-	register unsigned long long player = board->player;
-	register unsigned long long opponent = board->opponent;
+	register u64 player = board->player;
+	register u64 opponent = board->opponent;
 
 	if (s & 1) {
 		player = horizontal_mirror(player);
@@ -378,7 +378,7 @@ int board_unique(const Board *board, Board *unique)
 void board_rand(Board *board, int n_ply, Random *r)
 {
 	Move move[1];
-	unsigned long long moves;
+	u64 moves;
 	int ply;
 
 	board_init(board);
@@ -407,7 +407,7 @@ void board_rand(Board *board, int n_ply, Random *r)
  * @param move  a Move structure remembering the modification.
  * @return      the flipped discs.
  */
-unsigned long long board_get_move(const Board *board, const int x, Move *move)
+u64 board_get_move(const Board *board, const int x, Move *move)
 {
 	move->flipped = flip[x](board->player, board->opponent);
 	move->x = x;
@@ -486,10 +486,10 @@ void board_pass(Board *board)
  * @param next resulting board.
  * @return flipped discs.
  */
-unsigned long long board_next(const Board *board, const int x, Board *next)
+u64 board_next(const Board *board, const int x, Board *next)
 {
-	const unsigned long long flipped = flip[x](board->player, board->opponent);
-	const unsigned long long player = board->opponent ^ flipped;
+	const u64 flipped = flip[x](board->player, board->opponent);
+	const u64 player = board->opponent ^ flipped;
 
 	next->opponent = board->player ^ (flipped | x_to_bit(x));
 	next->player = player;
@@ -507,9 +507,9 @@ unsigned long long board_next(const Board *board, const int x, Board *next)
  * @param next resulting board.
  * @return flipped discs.
  */
-unsigned long long board_pass_next(const Board *board, const int x, Board *next)
+u64 board_pass_next(const Board *board, const int x, Board *next)
 {
-	const unsigned long long flipped = flip[x](board->opponent, board->player);
+	const u64 flipped = flip[x](board->opponent, board->player);
 
 	next->opponent = board->opponent ^ (flipped | x_to_bit(x));
 	next->player = board->player ^ flipped;
@@ -530,14 +530,14 @@ unsigned long long board_pass_next(const Board *board, const int x, Board *next)
  * @param dir flipping direction.
  * @return some legal moves in a 64-bit unsigned integer.
  */
-static inline unsigned long long get_some_moves(const unsigned long long P, const unsigned long long mask, const int dir)
+static inline u64 get_some_moves(const u64 P, const u64 mask, const int dir)
 {
 
 #if PARALLEL_PREFIX & 1
 	// 1-stage Parallel Prefix (intermediate between kogge stone & sequential) 
 	// 6 << + 6 >> + 7 | + 10 &
-	register unsigned long long flip_l, flip_r;
-	register unsigned long long mask_l, mask_r;
+	register u64 flip_l, flip_r;
+	register u64 mask_l, mask_r;
 	const int dir2 = dir + dir;
 
 	flip_l  = mask & (P << dir);          flip_r  = mask & (P >> dir);
@@ -552,8 +552,8 @@ static inline unsigned long long get_some_moves(const unsigned long long P, cons
 	// kogge-stone algorithm
  	// 6 << + 6 >> + 12 & + 7 |
 	// + better instruction independency
-	register unsigned long long flip_l, flip_r;
-	register unsigned long long mask_l, mask_r;
+	register u64 flip_l, flip_r;
+	register u64 mask_l, mask_r;
 	const int dir2 = dir << 1;
 	const int dir4 = dir << 2;
 
@@ -568,7 +568,7 @@ static inline unsigned long long get_some_moves(const unsigned long long P, cons
 #else
  	// sequential algorithm
  	// 7 << + 7 >> + 6 & + 12 |
-	register unsigned long long flip;
+	register u64 flip;
 
 	flip = (((P << dir) | (P >> dir)) & mask);
 	flip |= (((flip << dir) | (flip >> dir)) & mask);
@@ -590,11 +590,11 @@ static inline unsigned long long get_some_moves(const unsigned long long P, cons
  * @param O bitboard with opponent's discs.
  * @return all legal moves in a 64-bit unsigned integer.
  */
-unsigned long long get_moves(const unsigned long long P, const unsigned long long O)
+u64 get_moves(const u64 P, const u64 O)
 {
 #if defined(USE_GAS_MMX)
  			/* mm7: P, mm6: O */
-	const unsigned long long mask_7e = 0x7e7e7e7e7e7e7e7eULL;
+	const u64 mask_7e = 0x7e7e7e7e7e7e7e7eULL;
 
   __asm__ volatile(
 	"movl	%3, %%esi\n\t"		"movq	%1, %%mm7\n\t"
@@ -728,7 +728,7 @@ unsigned long long get_moves(const unsigned long long P, const unsigned long lon
     : "=g" (moves) : "m" (P), "m" (O), "g" (P >> 32), "g" (O >> 32), "m" (mask_7e) : "eax", "edx", "ecx", "esi", "edi" );
 
 #else
-	const unsigned long long mask = O & 0x7E7E7E7E7E7E7E7Eull;
+	const u64 mask = O & 0x7E7E7E7E7E7E7E7Eull;
 
 	return (get_some_moves(P, mask, 1) // horizontal
 		| get_some_moves(P, O, 8)   // vertical
@@ -748,9 +748,9 @@ unsigned long long get_moves(const unsigned long long P, const unsigned long lon
  * @param O bitboard with opponent's discs.
  * @return all legal moves in a 64-bit unsigned integer.
  */
-unsigned long long get_moves_6x6(const unsigned long long P, const unsigned long long O)
+u64 get_moves_6x6(const u64 P, const u64 O)
 {
-	const unsigned long long E = (~(P|O) & 0x007E7E7E7E7E7E00ull); // empties
+	const u64 E = (~(P|O) & 0x007E7E7E7E7E7E00ull); // empties
 
 	return ((get_some_moves(P, O & 0x003C3C3C3C3C3C00ull, 1) // horizontal
 		| get_some_moves(P, O & 0x00007E7E7E7E0000ull, 8)   // vertical
@@ -766,9 +766,9 @@ unsigned long long get_moves_6x6(const unsigned long long P, const unsigned long
  * @param O bitboard with opponent's discs.
  * @return true or false.
  */
-bool can_move(const unsigned long long P, const unsigned long long O)
+bool can_move(const u64 P, const u64 O)
 {
-	const unsigned long long E = ~(P|O); // empties
+	const u64 E = ~(P|O); // empties
 
 	return (get_some_moves(P, O & 0x007E7E7E7E7E7E00ull, 7) & E)  // diagonals
 		|| (get_some_moves(P, O & 0x007E7E7E7E7E7E00ull, 9) & E)
@@ -783,9 +783,9 @@ bool can_move(const unsigned long long P, const unsigned long long O)
  * @param O bitboard with opponent's discs.
  * @return true or false.
  */
-bool can_move_6x6(const unsigned long long P, const unsigned long long O)
+bool can_move_6x6(const u64 P, const u64 O)
 {
-	const unsigned long long E = (~(P|O) & 0x007E7E7E7E7E7E00ull); // empties
+	const u64 E = (~(P|O) & 0x007E7E7E7E7E7E00ull); // empties
 
 	return (get_some_moves(P, O & 0x00003C3C3C3C0000ull, 7) & E)  // diagonals
 		|| (get_some_moves(P, O & 0x00003C3C3C3C0000ull, 9) & E)
@@ -802,12 +802,12 @@ bool can_move_6x6(const unsigned long long P, const unsigned long long O)
  * @param O bitboard with opponent's discs.
  * @return a count of all legal moves.
  */
-int get_mobility(const unsigned long long P, const unsigned long long O)
+int get_mobility(const u64 P, const u64 O)
 {
 	return bit_count(get_moves(P, O));
 }
 
-int get_weighted_mobility(const unsigned long long P, const unsigned long long O)
+int get_weighted_mobility(const u64 P, const u64 O)
 {
 	return bit_weighted_count(get_moves(P, O));
 }
@@ -819,7 +819,7 @@ int get_weighted_mobility(const unsigned long long P, const unsigned long long O
  * @param dir flipping direction.
  * @return some potential moves in a 64-bit unsigned integer.
  */
-static inline unsigned long long get_some_potential_moves(const unsigned long long P, const int dir)
+static inline u64 get_some_potential_moves(const u64 P, const int dir)
 {
 	return (P << dir | P >> dir);
 }
@@ -833,7 +833,7 @@ static inline unsigned long long get_some_potential_moves(const unsigned long lo
  * @param O bitboard with opponent's discs.
  * @return all potential moves in a 64-bit unsigned integer.
  */
-static unsigned long long get_potential_moves(const unsigned long long P, const unsigned long long O)
+static u64 get_potential_moves(const u64 P, const u64 O)
 {
 	return (get_some_potential_moves(O & 0x7E7E7E7E7E7E7E7Eull, 1) // horizontal
 		| get_some_potential_moves(O & 0x00FFFFFFFFFFFF00ull, 8)   // vertical
@@ -851,7 +851,7 @@ static unsigned long long get_potential_moves(const unsigned long long P, const 
  * @param O bitboard with opponent's discs.
  * @return a count of potential moves.
  */
-int get_potential_mobility(const unsigned long long P, const unsigned long long O)
+int get_potential_mobility(const u64 P, const u64 O)
 {
 	return bit_weighted_count(get_potential_moves(P, O));
 }
@@ -946,15 +946,15 @@ void edge_stability_init(void)
  * @param dir tested direction
  * @return a bitboard with full lines along the tested direction.
  */
-static inline unsigned long long get_full_lines(const unsigned long long line, const int dir)
+static inline u64 get_full_lines(const u64 line, const int dir)
 {
 #if KOGGE_STONE & 2
 
 	// kogge-stone algorithm
  	// 5 << + 5 >> + 7 & + 10 |
 	// + better instruction independency
-	register unsigned long long full_l, full_r, edge_l, edge_r;
-	const  unsigned long long edge = 0xff818181818181ffULL;
+	register u64 full_l, full_r, edge_l, edge_r;
+	const  u64 edge = 0xff818181818181ffULL;
 	const int dir2 = dir << 1;
 	const int dir4 = dir << 2;
 
@@ -970,9 +970,9 @@ static inline unsigned long long get_full_lines(const unsigned long long line, c
 
 	// 1-stage Parallel Prefix (intermediate between kogge stone & sequential) 
 	// 5 << + 5 >> + 7 & + 10 |
-	register unsigned long long full_l, full_r;
-	register unsigned long long edge_l, edge_r;
-	const  unsigned long long edge = 0xff818181818181ffULL;
+	register u64 full_l, full_r;
+	register u64 edge_l, edge_r;
+	const  u64 edge = 0xff818181818181ffULL;
 	const int dir2 = dir + dir;
 
 	full_l  = edge | (line << dir);       full_r  = edge | (line >> dir);
@@ -987,8 +987,8 @@ static inline unsigned long long get_full_lines(const unsigned long long line, c
 
 	// sequential algorithm
  	// 6 << + 6 >> + 12 & + 5 |
-	register unsigned long long full;
-	const unsigned long long edge = line & 0xff818181818181ffULL;
+	register u64 full;
+	const u64 edge = line & 0xff818181818181ffULL;
 
 	full = (line & (((line >> dir) & (line << dir)) | edge));
 	full &= (((full >> dir) & (full << dir)) | edge);
@@ -1018,11 +1018,11 @@ static inline unsigned long long get_full_lines(const unsigned long long line, c
  * @return a bitboard with (some of) player's stable discs.
  *
  */
-static inline unsigned long long get_stable_edge(const unsigned long long P, const unsigned long long O)
+static inline u64 get_stable_edge(const u64 P, const u64 O)
 {
 	// compute the exact stable edges (from precomputed tables)
 	return edge_stability[P & 0xff][O & 0xff]
-	    |  ((unsigned long long)edge_stability[P >> 56][O >> 56]) << 56
+	    |  ((u64)edge_stability[P >> 56][O >> 56]) << 56
 	    |  A1_A8[edge_stability[packA1A8(P)][packA1A8(O)]]
 	    |  H1_H8[edge_stability[packH1H8(P)][packH1H8(O)]];
 }
@@ -1036,15 +1036,15 @@ static inline unsigned long long get_stable_edge(const unsigned long long P, con
  * @param O bitboard with opponent's discs.
  * @return the number of stable discs.
  */
-int get_stability(const unsigned long long P, const unsigned long long O)
+int get_stability(const u64 P, const u64 O)
 {
-	const unsigned long long disc = (P | O);
-	const unsigned long long central_mask = (P & 0x007e7e7e7e7e7e00ULL);
-	const unsigned long long full_h = get_full_lines(disc, 1);
-	const unsigned long long full_v = get_full_lines(disc, 8);
-	const unsigned long long full_d7 = get_full_lines(disc, 7);
-	const unsigned long long full_d9 = get_full_lines(disc, 9);
-	register unsigned long long stable_h, stable_v, stable_d7, stable_d9, stable, new_stable;
+	const u64 disc = (P | O);
+	const u64 central_mask = (P & 0x007e7e7e7e7e7e00ULL);
+	const u64 full_h = get_full_lines(disc, 1);
+	const u64 full_v = get_full_lines(disc, 8);
+	const u64 full_d7 = get_full_lines(disc, 7);
+	const u64 full_d9 = get_full_lines(disc, 9);
+	register u64 stable_h, stable_v, stable_d7, stable_d9, stable, new_stable;
 
 	// compute the exact stable edges (from precomputed tables)
 	new_stable = get_stable_edge(P, O);
@@ -1075,7 +1075,7 @@ int get_stability(const unsigned long long P, const unsigned long long O)
  * @param O bitboard with opponent's discs.
  * @return the number of stable discs on the edges.
  */
-int get_edge_stability(const unsigned long long P, const unsigned long long O)
+int get_edge_stability(const u64 P, const u64 O)
 {
 	return bit_count(get_stable_edge(P, O));
 }
@@ -1091,9 +1091,9 @@ int get_edge_stability(const unsigned long long P, const unsigned long long O)
  * @param P bitboard with player's discs.
  * @return the number of stable discs around the corner.
  */
-int get_corner_stability(const unsigned long long P)
+int get_corner_stability(const u64 P)
 {
-	const unsigned long long stable = ((((0x0100000000000001ULL & P) << 1) | ((0x8000000000000080ULL & P) >> 1) | ((0x0000000000000081ULL & P) << 8) | ((0x8100000000000000ULL & P) >> 8) | 0x8100000000000081ULL) & P);
+	const u64 stable = ((((0x0100000000000001ULL & P) << 1) | ((0x8000000000000080ULL & P) >> 1) | ((0x0000000000000081ULL & P) << 8) | ((0x8100000000000000ULL & P) >> 8) | 0x8100000000000081ULL) & P);
 	return bit_count(stable);
 }
 
@@ -1103,9 +1103,9 @@ int get_corner_stability(const unsigned long long P)
  * @param board the board.
  * @return the hash code of the bitboard
  */
-unsigned long long board_get_hash_code(const Board *board)
+u64 board_get_hash_code(const Board *board)
 {
-	unsigned long long h1, h2;
+	u64 h1, h2;
 	const unsigned char *p = (const unsigned char*)board;
 
 	h1  = hash_rank[0][p[0]];
@@ -1203,7 +1203,7 @@ void board_print(const Board *board, const int player, FILE *f)
 {
 	int i, j, square, x;
 	const char *color = "?*O-." + 1;
-	unsigned long long moves = get_moves(board->player, board->opponent);
+	u64 moves = get_moves(board->player, board->opponent);
 
 	fputs("  A B C D E F G H\n", f);
 	for (i = 0; i < 8; ++i) {

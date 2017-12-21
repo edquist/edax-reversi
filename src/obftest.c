@@ -292,7 +292,7 @@ void obf_test(Search *search, const char *obf_file, const char *wrong_file)
 {
 	FILE *f, *w = NULL;
 	OBF obf[1];
-	unsigned long long T = 0, n_nodes = 0;
+	u64 T = 0, n_nodes = 0;
 	int n = 0, n_bad_score = 0, n_bad_move = 0;
 	double score_error = 0.0, move_error = 0.0;
 	int i, ok;
@@ -481,8 +481,8 @@ void obf_filter(const char *input_file, const char *output_file)
 void obf_speed(Search *search, const int n)
 {
 	int i;
-	unsigned long long t = real_clock();
-	unsigned long long T = 0, n_nodes = 0;
+	u64 t = real_clock();
+	u64 T = 0, n_nodes = 0;
 	const int level = options.level;
 	Random r[1];
 	OBF obf;

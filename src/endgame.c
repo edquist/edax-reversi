@@ -450,7 +450,7 @@ int NWS_endgame(Search *search, const int alpha)
 {
 	int score;
 	HashTable *hash_table = search->hash_table;
-	unsigned long long hash_code;
+	u64 hash_code;
 	const int beta = alpha + 1;
 	HashData hash_data[1];
 	Board *board = search->board;

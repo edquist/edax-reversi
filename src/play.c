@@ -990,7 +990,7 @@ void play_print(Play *play, FILE *f)
 	const int p = play->player;
 	const int o = !p;
 	const int ip = play->player ^ (play->i_game & 1);
-	unsigned long long moves;
+	u64 moves;
 
 	moves = get_moves(board->player, board->opponent);
 	discs[p] = bit_count(board->player);

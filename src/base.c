@@ -608,7 +608,7 @@ void wthor_test(const char *file, Search *search)
  * @param search Search.
  * @param histogram output array.
  */
-void wthor_eval(const char *file, Search *search, unsigned long long histogram[129][65])
+void wthor_eval(const char *file, Search *search, u64 histogram[129][65])
 {
 	WthorBase base[1];
 	WthorGame *wthor;

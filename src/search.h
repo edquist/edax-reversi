@@ -46,7 +46,7 @@ typedef struct Result {
 	Bound bound[BOARD_SIZE + 2]; /**< score bounds / move */
 	Line pv[1];                  /**< principal variation */
 	long long time;              /**< searched time */
-	unsigned long long n_nodes;  /**< searched node count */
+	u64 n_nodes;  /**< searched node count */
 	bool book_move;              /**< book move origin */
 	int n_moves;                 /**< total moves to search */
 	int n_moves_left;            /**< left moves to search */
@@ -121,8 +121,8 @@ typedef struct Search {
 
 	void (*observer)(Result*);                    /**< call back function to print search result */
 
-	volatile unsigned long long n_nodes;          /**< node counter */
-	volatile unsigned long long child_nodes;      /**< node counter */
+	volatile u64 n_nodes;          /**< node counter */
+	volatile u64 child_nodes;      /**< node counter */
 
 } Search;
 
@@ -168,7 +168,7 @@ void search_update_pass_midgame(Search*);
 void search_restore_pass_midgame(Search*);
 long long search_clock(Search*);
 long long search_time(Search*);
-unsigned long long search_count_nodes(Search*);
+u64 search_count_nodes(Search*);
 void search_print_pv(Search*, const int, const char*, FILE*);
 void search_print(Search*, const int, const int, const char, FILE*);
 int get_pv_extension(const int, const int);
@@ -179,8 +179,8 @@ bool search_SC_PVS(Search*, volatile int*, volatile int*, int*);
 bool search_SC_NWS(Search*, const int, int*);
 bool search_TC_PVS(HashData*, const int, const int, volatile int*, volatile int*, int*);
 bool search_TC_NWS(HashData*, const int, const int, const int, int*);
-bool search_ETC_PVS(Search*, MoveList*, unsigned long long, const int, const int, volatile int*, volatile int*, int*);
-bool search_ETC_NWS(Search*, MoveList*, unsigned long long, const int, const int, const int, int*);
+bool search_ETC_PVS(Search*, MoveList*, u64, const int, const int, volatile int*, volatile int*, int*);
+bool search_ETC_NWS(Search*, MoveList*, u64, const int, const int, const int, int*);
 
 NodeType next_node_type(const NodeType parent, const bool first_move);
 

@@ -18,7 +18,7 @@
 
 /** move representation */
 typedef struct Move {
-	unsigned long long flipped;   /**< bitboard representation of flipped squares */
+	u64 flipped;   /**< bitboard representation of flipped squares */
 	int x;                        /**< square played */
 	int score;                    /**< score for this move */
 	unsigned int cost;            /**< move cost */

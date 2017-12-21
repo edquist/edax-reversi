@@ -26,8 +26,8 @@
 Log xboard_log[1];
 
 typedef struct {
-	unsigned long long time;
-	unsigned long long n_nodes;
+	u64 time;
+	u64 n_nodes;
 	int n_games;
 } XBoardStats;
 
@@ -270,7 +270,7 @@ static void xboard_check_game_over(Play *play)
  */
 static inline int hash_size(int n)
 {
-	unsigned long long s = sizeof (Hash) << n;
+	u64 s = sizeof (Hash) << n;
 	return ((s << 1) + (s >> 4) + sizeof (HashTable) * 3) >> 20;
 }
 

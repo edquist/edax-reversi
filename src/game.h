@@ -32,7 +32,7 @@ typedef struct Game {
 	char name[2][32];
 	char move[60];
 	char player;
-	unsigned long long hash;
+	u64 hash;
 } Game;
 
 typedef struct WthorGame {

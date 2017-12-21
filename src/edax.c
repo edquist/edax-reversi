@@ -286,7 +286,7 @@ void ui_loop_edax(UI *ui)
 	char *cmd = NULL, *param = NULL;
 	Play *play = ui->play;
 	char book_file[FILENAME_MAX];
-	unsigned long long histogram[129][65];
+	u64 histogram[129][65];
 	int repeat = options.repeat;
 
 	histogram_init(histogram);

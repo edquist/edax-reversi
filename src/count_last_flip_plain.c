@@ -110,7 +110,7 @@ static const unsigned char COUNT_FLIP[8][256] = {
 };
 
 /* bit masks for diagonal lines */
-static const unsigned long long mask_d[2][64] = {
+static const u64 mask_d[2][64] = {
 	{
 		0x0000000000000001ULL, 0x0000000000000102ULL, 0x0000000000010204ULL, 0x0000000001020408ULL,
 		0x0000000102040810ULL, 0x0000010204081020ULL, 0x0001020408102040ULL, 0x0102040810204080ULL,
@@ -156,7 +156,7 @@ static const unsigned long long mask_d[2][64] = {
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-int last_flip(int pos, unsigned long long P)
+int last_flip(int pos, u64 P)
 {
 	unsigned char	n_flipped;
 	int	x = pos & 0x07;

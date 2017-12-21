@@ -13,7 +13,7 @@
 
 /** double linked list of squares */
 typedef struct SquareList {
-	unsigned long long b;         /*!< bit representation of the square location */
+	u64 b;         /*!< bit representation of the square location */
 	int x;                        /*!< square location */
 	int quadrant;                 /*!< parity quadrant */
 	struct SquareList *previous;  /*!< link to previous square */

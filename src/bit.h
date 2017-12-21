@@ -16,23 +16,23 @@
 struct Random;
 
 /* declaration */
-int bit_count(unsigned long long);
-int bit_weighted_count(const unsigned long long);
-int first_bit(unsigned long long);
-int next_bit(unsigned long long*);
-int last_bit(unsigned long long);
-void bitboard_write(const unsigned long long, FILE*);
-unsigned long long transpose(unsigned long long);
-unsigned long long vertical_mirror(unsigned long long);
-unsigned long long horizontal_mirror(unsigned long long);
+int bit_count(u64);
+int bit_weighted_count(const u64);
+int first_bit(u64);
+int next_bit(u64*);
+int last_bit(u64);
+void bitboard_write(const u64, FILE*);
+u64 transpose(u64);
+u64 vertical_mirror(u64);
+u64 horizontal_mirror(u64);
 unsigned int bswap_int(unsigned int);
 unsigned short bswap_short(unsigned short);
-int get_rand_bit(unsigned long long, struct Random*);
+int get_rand_bit(u64, struct Random*);
 
 /** Loop over each bit set. */
 #define foreach_bit(i, b) for (i = first_bit(b); b; i = next_bit(&b))
 
-extern const unsigned long long X_TO_BIT[];
+extern const u64 X_TO_BIT[];
 /** Return a bitboard with bit x set. */
 #define x_to_bit(x) X_TO_BIT[x]
 

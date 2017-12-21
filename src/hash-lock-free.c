@@ -38,10 +38,10 @@
 #include <assert.h>
 
 /** hashing global data */
-unsigned long long hash_rank[16][256];
+u64 hash_rank[16][256];
 
 /** hashing global data */
-unsigned long long hash_move[64][60];
+u64 hash_move[64][60];
 
 /** HashData init value */
 const HashData HASH_DATA_INIT = {0, 0, 0, 0, -SCORE_INF, SCORE_INF, {NOMOVE, NOMOVE}};
@@ -88,25 +88,25 @@ void hash_move_init(void)
  * @param data Hash data.
  * @return a 64 bits key.
  */
-static inline unsigned long long hash_key(const HashData *data)
+static inline u64 hash_key(const HashData *data)
 {
 	if (USE_TYPE_PUNING) { // fast version using type puning.
 		union {
 			HashData data;
-			unsigned long long key;
+			u64 key;
 		} u;
 		u.data = *data;
 		return u.key;
 	} else { // more portable but slower version
-		unsigned long long pack;
-		pack  = ((unsigned long long) data->move[1]) << 56;
-		pack |= ((unsigned long long) data->move[0]) << 48;
-		pack |= (((unsigned long long) data->upper) & 0xff) << 40; // sign extension masked
-		pack |= (((unsigned long long) data->lower) & 0xff) << 32; // sign extension masked
-		pack |= ((unsigned long long) data->date) << 24;
-		pack |= ((unsigned long long) data->cost) << 16;
-		pack |= ((unsigned long long) data->selectivity) << 8;
-		pack |= ((unsigned long long) data->depth);
+		u64 pack;
+		pack  = ((u64) data->move[1]) << 56;
+		pack |= ((u64) data->move[0]) << 48;
+		pack |= (((u64) data->upper) & 0xff) << 40; // sign extension masked
+		pack |= (((u64) data->lower) & 0xff) << 32; // sign extension masked
+		pack |= ((u64) data->date) << 24;
+		pack |= ((u64) data->cost) << 16;
+		pack |= ((u64) data->selectivity) << 8;
+		pack |= ((u64) data->depth);
 
 		return pack;
 	}
@@ -303,7 +303,7 @@ static void data_new(HashData *data, const int date, const int depth, const int 
  * @param score Best score.
  * @param move Best move.
  */
-static void hash_new(Hash *hash, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+static void hash_new(Hash *hash, const u64 hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	HashData data[1];
 
@@ -334,7 +334,7 @@ static void hash_new(Hash *hash, const unsigned long long hash_code, const int d
  * @param upper Upper score bound.
  * @param move Best move.
  */
-void hash_set(Hash *hash, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int cost, const int lower, const int upper, const int move)
+void hash_set(Hash *hash, const u64 hash_code, const int date, const int depth, const int selectivity, const int cost, const int lower, const int upper, const int move)
 {
 	HashData data[1];
 	
@@ -376,7 +376,7 @@ void hash_set(Hash *hash, const unsigned long long hash_code, const int date, co
  * @param move Best move.
  * @return true if an entry has been updated, false otherwise.
  */
-static bool hash_update(Hash *hash, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+static bool hash_update(Hash *hash, const u64 hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	HashData data[1];
 	bool ok;
@@ -418,7 +418,7 @@ static bool hash_update(Hash *hash, const unsigned long long hash_code, const in
  * @param move Best move.
  * @return true if an entry has been replaced, false otherwise.
  */
-static bool hash_replace(Hash *hash, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+static bool hash_replace(Hash *hash, const u64 hash_code, const int date, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	HashData data[1];
 	bool ok;
@@ -447,7 +447,7 @@ static bool hash_replace(Hash *hash, const unsigned long long hash_code, const i
  * @param upper Upper score bound.
  * @param move Best move.
  */
-bool hash_reset(Hash *hash, const unsigned long long hash_code, const int date, const int depth, const int selectivity, const int lower, const int upper, const int move)
+bool hash_reset(Hash *hash, const u64 hash_code, const int date, const int depth, const int selectivity, const int lower, const int upper, const int move)
 {
 	HashData data[1];
 	bool ok;
@@ -493,7 +493,7 @@ bool hash_reset(Hash *hash, const unsigned long long hash_code, const int date, 
  * @param upper Beta bound.
  * @param move best move.
  */
-void hash_feed(HashTable *hash_table, const unsigned long long hash_code, const int depth, const int selectivity, const int lower, const int upper, const int move)
+void hash_feed(HashTable *hash_table, const u64 hash_code, const int depth, const int selectivity, const int lower, const int upper, const int move)
 {
 	Hash *hash, *worst;
 	int i;
@@ -540,7 +540,7 @@ void hash_feed(HashTable *hash_table, const unsigned long long hash_code, const 
  * @param score      Best score found.
  * @param move       Best move found.
  */
-void hash_store(HashTable *hash_table, const unsigned long long hash_code, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+void hash_store(HashTable *hash_table, const u64 hash_code, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	register int i;
 	Hash *worst, *hash;
@@ -572,7 +572,7 @@ void hash_store(HashTable *hash_table, const unsigned long long hash_code, const
  * @param score      Best score found.
  * @param move       Best move found.
  */
-void hash_force(HashTable *hash_table, const unsigned long long hash_code, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
+void hash_force(HashTable *hash_table, const u64 hash_code, const int depth, const int selectivity, const int cost, const int alpha, const int beta, const int score, const int move)
 {
 	register int i;
 	Hash *worst, *hash;
@@ -597,7 +597,7 @@ void hash_force(HashTable *hash_table, const unsigned long long hash_code, const
  * @param data Output hash data.
  * @return True the board was found, false otherwise.
  */
-bool hash_get(HashTable *hash_table, const unsigned long long hash_code, HashData *data)
+bool hash_get(HashTable *hash_table, const u64 hash_code, HashData *data)
 {
 	register int i;
 	const Hash *hash;
@@ -626,7 +626,7 @@ bool hash_get(HashTable *hash_table, const unsigned long long hash_code, HashDat
  * @param hash_code Hash code of an othello board.
  * @param move Move to exclude.
  */
-void hash_exclude_move(HashTable *hash_table, const unsigned long long hash_code, const int move)
+void hash_exclude_move(HashTable *hash_table, const u64 hash_code, const int move)
 {
 	register int i;
 	Hash *hash;

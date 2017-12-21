@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
-typedef unsigned long long uint64;
+typedef u64 uint64;
 typedef unsigned char uint8;
 
 // usefull constant
@@ -443,7 +443,7 @@ int main() {
 		fprintf(f, " * @param P player's disc pattern.\n");
 		fprintf(f, " * @return flipped disc count.\n");
 	 	fprintf(f, " */\n");
-		fprintf(f, "static int count_last_flip_%s(const unsigned long long P)\n{\n", s);
+		fprintf(f, "static int count_last_flip_%s(const u64 P)\n{\n", s);
 		fprintf(f, "\tregister int n_flipped;\n");
 		fprintf(f, "\n");
 
@@ -491,13 +491,13 @@ int main() {
 	fprintf(f, " * @param P player's disc pattern (unused).\n");
 	fprintf(f, " * @return zero.\n");
 	fprintf(f, " */\n");
-	fprintf(f, "static int count_last_flip_pass(const unsigned long long P)\n{\n");
+	fprintf(f, "static int count_last_flip_pass(const u64 P)\n{\n");
 	fprintf(f, "\t(void) P; // useless code to shut-up compiler warning\n");
 	fprintf(f, "\treturn 0;\n");
 	fprintf(f, "}\n\n");
 
 	fprintf(f, "/** Array of functions to count flipped discs of the last move */\n");
-	fprintf(f, "int (*count_last_flip[])(const unsigned long long) = {\n");
+	fprintf(f, "int (*count_last_flip[])(const u64) = {\n");
 	for (n = 0; n < 64; n++) {
 		x = n % 8; s[0] = 'A' + x;
 		y = n / 8; s[1] = '1' + y;

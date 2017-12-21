@@ -564,7 +564,7 @@ static void eval_update_0(Eval *eval, const Move *move)
 	const CoordinateToFeature *s = EVAL_X2F + move->x;
 	register int x;
 	int *feature = eval->feature;
-	unsigned long long f = move->flipped;
+	u64 f = move->flipped;
 	
 #ifdef DEBUG
 
@@ -627,7 +627,7 @@ static void eval_update_1(Eval *eval, const Move *move)
 	const CoordinateToFeature *s = EVAL_X2F + move->x;
 	register int x;
 	int *feature = eval->feature;
-	unsigned long long f = move->flipped;
+	u64 f = move->flipped;
 
 #ifdef DEBUG
 
@@ -698,7 +698,7 @@ static void eval_restore_0(Eval *eval, const Move *move)
 	const CoordinateToFeature *s = EVAL_X2F + move->x;
 	register int x;
 	int *feature = eval->feature;
-	unsigned long long f = move->flipped;
+	u64 f = move->flipped;
 
 #ifdef DEBUG
 
@@ -755,7 +755,7 @@ static void eval_restore_1(Eval *eval, const Move *move)
 	const CoordinateToFeature *s = EVAL_X2F + move->x;
 	register int x;
 	int *feature = eval->feature;
-	unsigned long long f = move->flipped;
+	u64 f = move->flipped;
 
 #ifdef DEBUG
 

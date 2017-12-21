@@ -116,7 +116,7 @@ void statistics_print(FILE *f)
 	statistics.n_split_success += statistics.n_master_helper;
 
 	if (statistics.n_split_success) {
-		unsigned long long n_helper_nodes = statistics.n_parallel_nodes;
+		u64 n_helper_nodes = statistics.n_parallel_nodes;
 		fprintf(f, "YBWC:\n");
 		fprintf(f, "nodes splitted:      %12llu (%6.2f%%)\n", statistics.n_split_success, 100.0 * statistics.n_split_success / statistics.n_split_try);
 		fprintf(f, "master helper tasks: %12llu (%6.2f%%)\n", statistics.n_master_helper, 100.0 * statistics.n_master_helper / statistics.n_split_success);

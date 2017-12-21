@@ -103,10 +103,10 @@ static const char COUNT_FLIP_L[128] = {
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_A1(const unsigned long long P)
+static int count_last_flip_A1(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v, P_d9;
+	u64 P_v, P_d9;
 
 	P_v = P & 0x0101010101010100ULL;
 	n_flipped  = ((P_v & -P_v) * 0x000020406080a0c0ULL) >> 60;
@@ -123,10 +123,10 @@ static int count_last_flip_A1(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_B1(const unsigned long long P)
+static int count_last_flip_B1(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v, P_d9;
+	u64 P_v, P_d9;
 
 	P_v = P & 0x0202020202020200ULL;
 	n_flipped  = ((P_v & -P_v) * 0x0000102030405060ULL) >> 60;
@@ -143,10 +143,10 @@ static int count_last_flip_B1(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_C1(const unsigned long long P)
+static int count_last_flip_C1(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v;
+	u64 P_v;
 
 	P_v = P & 0x0404040404040400ULL;
 	n_flipped  = ((P_v & -P_v) * 0x0000081018202830ULL) >> 60;
@@ -162,10 +162,10 @@ static int count_last_flip_C1(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_D1(const unsigned long long P)
+static int count_last_flip_D1(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v;
+	u64 P_v;
 
 	P_v = P & 0x0808080808080800ULL;
 	n_flipped  = ((P_v & -P_v) * 0x000004080c101418ULL) >> 60;
@@ -181,10 +181,10 @@ static int count_last_flip_D1(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_E1(const unsigned long long P)
+static int count_last_flip_E1(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v;
+	u64 P_v;
 
 	P_v = P & 0x1010101010101000ULL;
 	n_flipped  = ((P_v & -P_v) * 0x0000020406080a0cULL) >> 60;
@@ -200,10 +200,10 @@ static int count_last_flip_E1(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_F1(const unsigned long long P)
+static int count_last_flip_F1(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v;
+	u64 P_v;
 
 	P_v = P & 0x2020202020202000ULL;
 	n_flipped  = ((P_v & -P_v) * 0x0000010203040506ULL) >> 60;
@@ -219,10 +219,10 @@ static int count_last_flip_F1(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_G1(const unsigned long long P)
+static int count_last_flip_G1(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v, P_d7;
+	u64 P_v, P_d7;
 
 	P_v = P & 0x4040404040404000ULL;
 	n_flipped  = ((P_v & -P_v) * 0x0000008101820283ULL) >> 60;
@@ -239,10 +239,10 @@ static int count_last_flip_G1(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_H1(const unsigned long long P)
+static int count_last_flip_H1(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v, P_d7;
+	u64 P_v, P_d7;
 
 	P_v = P & 0x8080808080808000ULL;
 	n_flipped  = (((P_v & -P_v) >> 1) * 0x0000008101820283ULL) >> 60;
@@ -259,10 +259,10 @@ static int count_last_flip_H1(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_A2(const unsigned long long P)
+static int count_last_flip_A2(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v, P_d9;
+	u64 P_v, P_d9;
 
 	P_v = P & 0x0101010101010000ULL;
 	n_flipped  = ((P_v & -P_v) * 0x00000020406080a0ULL) >> 60;
@@ -279,10 +279,10 @@ static int count_last_flip_A2(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_B2(const unsigned long long P)
+static int count_last_flip_B2(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v, P_d9;
+	u64 P_v, P_d9;
 
 	P_v = P & 0x0202020202020000ULL;
 	n_flipped  = ((P_v & -P_v) * 0x0000001020304050ULL) >> 60;
@@ -299,10 +299,10 @@ static int count_last_flip_B2(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_C2(const unsigned long long P)
+static int count_last_flip_C2(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v;
+	u64 P_v;
 
 	P_v = P & 0x0404040404040000ULL;
 	n_flipped  = ((P_v & -P_v) * 0x0000000810182028ULL) >> 60;
@@ -318,10 +318,10 @@ static int count_last_flip_C2(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_D2(const unsigned long long P)
+static int count_last_flip_D2(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v;
+	u64 P_v;
 
 	P_v = P & 0x0808080808080000ULL;
 	n_flipped  = ((P_v & -P_v) * 0x00000004080c1014ULL) >> 60;
@@ -337,10 +337,10 @@ static int count_last_flip_D2(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_E2(const unsigned long long P)
+static int count_last_flip_E2(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v;
+	u64 P_v;
 
 	P_v = P & 0x1010101010100000ULL;
 	n_flipped  = ((P_v & -P_v) * 0x000000020406080aULL) >> 60;
@@ -356,10 +356,10 @@ static int count_last_flip_E2(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_F2(const unsigned long long P)
+static int count_last_flip_F2(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v;
+	u64 P_v;
 
 	P_v = P & 0x2020202020200000ULL;
 	n_flipped  = ((P_v & -P_v) * 0x0000000102030405ULL) >> 60;
@@ -375,10 +375,10 @@ static int count_last_flip_F2(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_G2(const unsigned long long P)
+static int count_last_flip_G2(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v, P_d7;
+	u64 P_v, P_d7;
 
 	P_v = P & 0x4040404040400000ULL;
 	n_flipped  = (((P_v & -P_v) >> 1) * 0x0000000102030405ULL) >> 60;
@@ -395,10 +395,10 @@ static int count_last_flip_G2(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_H2(const unsigned long long P)
+static int count_last_flip_H2(const u64 P)
 {
 	int n_flipped;
-	unsigned long long P_v, P_d7;
+	u64 P_v, P_d7;
 
 	P_v = P & 0x8080808080800000ULL;
 	n_flipped  = (((P_v & -P_v) >> 2) * 0x0000000102030405ULL) >> 60;
@@ -415,7 +415,7 @@ static int count_last_flip_H2(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_A3(const unsigned long long P)
+static int count_last_flip_A3(const u64 P)
 {
 	int n_flipped;
 
@@ -432,7 +432,7 @@ static int count_last_flip_A3(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_B3(const unsigned long long P)
+static int count_last_flip_B3(const u64 P)
 {
 	int n_flipped;
 
@@ -449,7 +449,7 @@ static int count_last_flip_B3(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_C3(const unsigned long long P)
+static int count_last_flip_C3(const u64 P)
 {
 	int n_flipped;
 
@@ -467,7 +467,7 @@ static int count_last_flip_C3(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_D3(const unsigned long long P)
+static int count_last_flip_D3(const u64 P)
 {
 	int n_flipped;
 
@@ -485,7 +485,7 @@ static int count_last_flip_D3(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_E3(const unsigned long long P)
+static int count_last_flip_E3(const u64 P)
 {
 	int n_flipped;
 
@@ -503,7 +503,7 @@ static int count_last_flip_E3(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_F3(const unsigned long long P)
+static int count_last_flip_F3(const u64 P)
 {
 	int n_flipped;
 
@@ -521,7 +521,7 @@ static int count_last_flip_F3(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_G3(const unsigned long long P)
+static int count_last_flip_G3(const u64 P)
 {
 	int n_flipped;
 
@@ -538,7 +538,7 @@ static int count_last_flip_G3(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_H3(const unsigned long long P)
+static int count_last_flip_H3(const u64 P)
 {
 	int n_flipped;
 
@@ -555,7 +555,7 @@ static int count_last_flip_H3(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_A4(const unsigned long long P)
+static int count_last_flip_A4(const u64 P)
 {
 	int n_flipped;
 
@@ -572,7 +572,7 @@ static int count_last_flip_A4(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_B4(const unsigned long long P)
+static int count_last_flip_B4(const u64 P)
 {
 	int n_flipped;
 
@@ -589,7 +589,7 @@ static int count_last_flip_B4(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_C4(const unsigned long long P)
+static int count_last_flip_C4(const u64 P)
 {
 	int n_flipped;
 
@@ -607,7 +607,7 @@ static int count_last_flip_C4(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_D4(const unsigned long long P)
+static int count_last_flip_D4(const u64 P)
 {
 	int n_flipped;
 
@@ -625,7 +625,7 @@ static int count_last_flip_D4(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_E4(const unsigned long long P)
+static int count_last_flip_E4(const u64 P)
 {
 	int n_flipped;
 
@@ -643,7 +643,7 @@ static int count_last_flip_E4(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_F4(const unsigned long long P)
+static int count_last_flip_F4(const u64 P)
 {
 	int n_flipped;
 
@@ -661,7 +661,7 @@ static int count_last_flip_F4(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_G4(const unsigned long long P)
+static int count_last_flip_G4(const u64 P)
 {
 	int n_flipped;
 
@@ -678,7 +678,7 @@ static int count_last_flip_G4(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_H4(const unsigned long long P)
+static int count_last_flip_H4(const u64 P)
 {
 	int n_flipped;
 
@@ -695,7 +695,7 @@ static int count_last_flip_H4(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_A5(const unsigned long long P)
+static int count_last_flip_A5(const u64 P)
 {
 	int n_flipped;
 
@@ -712,7 +712,7 @@ static int count_last_flip_A5(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_B5(const unsigned long long P)
+static int count_last_flip_B5(const u64 P)
 {
 	int n_flipped;
 
@@ -729,7 +729,7 @@ static int count_last_flip_B5(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_C5(const unsigned long long P)
+static int count_last_flip_C5(const u64 P)
 {
 	int n_flipped;
 
@@ -747,7 +747,7 @@ static int count_last_flip_C5(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_D5(const unsigned long long P)
+static int count_last_flip_D5(const u64 P)
 {
 	int n_flipped;
 
@@ -765,7 +765,7 @@ static int count_last_flip_D5(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_E5(const unsigned long long P)
+static int count_last_flip_E5(const u64 P)
 {
 	int n_flipped;
 
@@ -783,7 +783,7 @@ static int count_last_flip_E5(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_F5(const unsigned long long P)
+static int count_last_flip_F5(const u64 P)
 {
 	int n_flipped;
 
@@ -801,7 +801,7 @@ static int count_last_flip_F5(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_G5(const unsigned long long P)
+static int count_last_flip_G5(const u64 P)
 {
 	int n_flipped;
 
@@ -818,7 +818,7 @@ static int count_last_flip_G5(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_H5(const unsigned long long P)
+static int count_last_flip_H5(const u64 P)
 {
 	int n_flipped;
 
@@ -835,7 +835,7 @@ static int count_last_flip_H5(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_A6(const unsigned long long P)
+static int count_last_flip_A6(const u64 P)
 {
 	int n_flipped;
 
@@ -852,7 +852,7 @@ static int count_last_flip_A6(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_B6(const unsigned long long P)
+static int count_last_flip_B6(const u64 P)
 {
 	int n_flipped;
 
@@ -869,7 +869,7 @@ static int count_last_flip_B6(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_C6(const unsigned long long P)
+static int count_last_flip_C6(const u64 P)
 {
 	int n_flipped;
 
@@ -887,7 +887,7 @@ static int count_last_flip_C6(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_D6(const unsigned long long P)
+static int count_last_flip_D6(const u64 P)
 {
 	int n_flipped;
 
@@ -905,7 +905,7 @@ static int count_last_flip_D6(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_E6(const unsigned long long P)
+static int count_last_flip_E6(const u64 P)
 {
 	int n_flipped;
 
@@ -923,7 +923,7 @@ static int count_last_flip_E6(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_F6(const unsigned long long P)
+static int count_last_flip_F6(const u64 P)
 {
 	int n_flipped;
 
@@ -941,7 +941,7 @@ static int count_last_flip_F6(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_G6(const unsigned long long P)
+static int count_last_flip_G6(const u64 P)
 {
 	int n_flipped;
 
@@ -958,7 +958,7 @@ static int count_last_flip_G6(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_H6(const unsigned long long P)
+static int count_last_flip_H6(const u64 P)
 {
 	int n_flipped;
 
@@ -975,7 +975,7 @@ static int count_last_flip_H6(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_A7(const unsigned long long P)
+static int count_last_flip_A7(const u64 P)
 {
 	int n_flipped;
 
@@ -992,7 +992,7 @@ static int count_last_flip_A7(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_B7(const unsigned long long P)
+static int count_last_flip_B7(const u64 P)
 {
 	int n_flipped;
 
@@ -1009,7 +1009,7 @@ static int count_last_flip_B7(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_C7(const unsigned long long P)
+static int count_last_flip_C7(const u64 P)
 {
 	int n_flipped;
 
@@ -1026,7 +1026,7 @@ static int count_last_flip_C7(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_D7(const unsigned long long P)
+static int count_last_flip_D7(const u64 P)
 {
 	int n_flipped;
 
@@ -1043,7 +1043,7 @@ static int count_last_flip_D7(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_E7(const unsigned long long P)
+static int count_last_flip_E7(const u64 P)
 {
 	int n_flipped;
 
@@ -1060,7 +1060,7 @@ static int count_last_flip_E7(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_F7(const unsigned long long P)
+static int count_last_flip_F7(const u64 P)
 {
 	int n_flipped;
 
@@ -1077,7 +1077,7 @@ static int count_last_flip_F7(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_G7(const unsigned long long P)
+static int count_last_flip_G7(const u64 P)
 {
 	int n_flipped;
 
@@ -1094,7 +1094,7 @@ static int count_last_flip_G7(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_H7(const unsigned long long P)
+static int count_last_flip_H7(const u64 P)
 {
 	int n_flipped;
 
@@ -1111,7 +1111,7 @@ static int count_last_flip_H7(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_A8(const unsigned long long P)
+static int count_last_flip_A8(const u64 P)
 {
 	int n_flipped;
 
@@ -1128,7 +1128,7 @@ static int count_last_flip_A8(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_B8(const unsigned long long P)
+static int count_last_flip_B8(const u64 P)
 {
 	int n_flipped;
 
@@ -1145,7 +1145,7 @@ static int count_last_flip_B8(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_C8(const unsigned long long P)
+static int count_last_flip_C8(const u64 P)
 {
 	int n_flipped;
 
@@ -1162,7 +1162,7 @@ static int count_last_flip_C8(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_D8(const unsigned long long P)
+static int count_last_flip_D8(const u64 P)
 {
 	int n_flipped;
 
@@ -1179,7 +1179,7 @@ static int count_last_flip_D8(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_E8(const unsigned long long P)
+static int count_last_flip_E8(const u64 P)
 {
 	int n_flipped;
 
@@ -1196,7 +1196,7 @@ static int count_last_flip_E8(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_F8(const unsigned long long P)
+static int count_last_flip_F8(const u64 P)
 {
 	int n_flipped;
 
@@ -1213,7 +1213,7 @@ static int count_last_flip_F8(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_G8(const unsigned long long P)
+static int count_last_flip_G8(const u64 P)
 {
 	int n_flipped;
 
@@ -1230,7 +1230,7 @@ static int count_last_flip_G8(const unsigned long long P)
  * @param P player's disc pattern.
  * @return flipped disc count.
  */
-static int count_last_flip_H8(const unsigned long long P)
+static int count_last_flip_H8(const u64 P)
 {
 	int n_flipped;
 
@@ -1247,14 +1247,14 @@ static int count_last_flip_H8(const unsigned long long P)
  * @param P player's disc pattern (unused).
  * @return zero.
  */
-static int count_last_flip_pass(const unsigned long long P)
+static int count_last_flip_pass(const u64 P)
 {
 	(void) P; // useless code to shut-up compiler warning
 	return 0;
 }
 
 /** Array of functions to count flipped discs of the last move */
-int (*COUNT_LAST_FLIP[])(const unsigned long long) = {
+int (*COUNT_LAST_FLIP[])(const u64) = {
 	count_last_flip_A1, count_last_flip_B1, count_last_flip_C1, count_last_flip_D1,
 	count_last_flip_E1, count_last_flip_F1, count_last_flip_G1, count_last_flip_H1,
 	count_last_flip_A2, count_last_flip_B2, count_last_flip_C2, count_last_flip_D2,
@@ -1274,7 +1274,7 @@ int (*COUNT_LAST_FLIP[])(const unsigned long long) = {
 	count_last_flip_pass,
 };
 
-int count_last_flip(const int x, const unsigned long long P)
+int count_last_flip(const int x, const u64 P)
 {
 	return COUNT_LAST_FLIP[x](P);
 }

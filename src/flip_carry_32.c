@@ -102,7 +102,7 @@ static const unsigned char OUTFLANK_7[64] = {
 };
 
 /** flip array (indexed with outflank, returns inner 6 bits) */
-static const unsigned long long FLIPPED_2_H[130] = {
+static const u64 FLIPPED_2_H[130] = {
 	0x0000000000000000ULL, 0x0202020202020202ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0808080808080808ULL, 0x0a0a0a0a0a0a0a0aULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
@@ -122,7 +122,7 @@ static const unsigned long long FLIPPED_2_H[130] = {
 	0x7878787878787878ULL, 0x7a7a7a7a7a7a7a7aULL
 };
 
-static const unsigned long long FLIPPED_3_H[131] = {
+static const u64 FLIPPED_3_H[131] = {
 	0x0000000000000000ULL, 0x0606060606060606ULL, 0x0404040404040404ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
@@ -142,7 +142,7 @@ static const unsigned long long FLIPPED_3_H[131] = {
 	0x7070707070707070ULL, 0x7676767676767676ULL, 0x7474747474747474ULL
 };
 
-static const unsigned long long FLIPPED_4_H[133] = {
+static const u64 FLIPPED_4_H[133] = {
 	0x0000000000000000ULL, 0x0e0e0e0e0e0e0e0eULL, 0x0c0c0c0c0c0c0c0cULL, 0x0000000000000000ULL, 0x0808080808080808ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
@@ -162,7 +162,7 @@ static const unsigned long long FLIPPED_4_H[133] = {
 	0x6060606060606060ULL, 0x6e6e6e6e6e6e6e6eULL, 0x6c6c6c6c6c6c6c6cULL, 0x0000000000000000ULL, 0x6868686868686868ULL
 };
 
-static const unsigned long long FLIPPED_5_H[137] = {
+static const u64 FLIPPED_5_H[137] = {
 	0x0000000000000000ULL, 0x1e1e1e1e1e1e1e1eULL, 0x1c1c1c1c1c1c1c1cULL, 0x0000000000000000ULL, 0x1818181818181818ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x1010101010101010ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
@@ -183,7 +183,7 @@ static const unsigned long long FLIPPED_5_H[137] = {
 	0x5050505050505050ULL
 };
 
-static const unsigned long long FLIPPED_2_V[130] = {
+static const u64 FLIPPED_2_V[130] = {
 	0x0000000000000000ULL, 0x000000000000ff00ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x00000000ff000000ULL, 0x00000000ff00ff00ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
@@ -203,7 +203,7 @@ static const unsigned long long FLIPPED_2_V[130] = {
 	0x00ffffffff000000ULL, 0x00ffffffff00ff00ULL
 };
 
-static const unsigned long long FLIPPED_3_V[131] = {
+static const u64 FLIPPED_3_V[131] = {
 	0x0000000000000000ULL, 0x0000000000ffff00ULL, 0x0000000000ff0000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
@@ -223,7 +223,7 @@ static const unsigned long long FLIPPED_3_V[131] = {
 	0x00ffffff00000000ULL, 0x00ffffff00ffff00ULL, 0x00ffffff00ff0000ULL
 };
 
-static const unsigned long long FLIPPED_4_V[133] = {
+static const u64 FLIPPED_4_V[133] = {
 	0x0000000000000000ULL, 0x00000000ffffff00ULL, 0x00000000ffff0000ULL, 0x0000000000000000ULL, 0x00000000ff000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
@@ -243,7 +243,7 @@ static const unsigned long long FLIPPED_4_V[133] = {
 	0x00ffff0000000000ULL, 0x00ffff00ffffff00ULL, 0x00ffff00ffff0000ULL, 0x0000000000000000ULL, 0x00ffff00ff000000ULL
 };
 
-static const unsigned long long  FLIPPED_5_V[137] = {
+static const u64  FLIPPED_5_V[137] = {
 	0x0000000000000000ULL, 0x000000ffffffff00ULL, 0x000000ffffff0000ULL, 0x0000000000000000ULL, 0x000000ffff000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x000000ff00000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
 	0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL, 0x0000000000000000ULL,
@@ -272,10 +272,10 @@ static const unsigned long long  FLIPPED_5_V[137] = {
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_A1(const unsigned long long P, const unsigned long long O)
+static u64 flip_A1(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0101010101010100ULL) + 0x0000000000000100ULL) & P & 0x0101010101010000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0001010101010100ULL;
@@ -296,10 +296,10 @@ static unsigned long long flip_A1(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_B1(const unsigned long long P, const unsigned long long O)
+static u64 flip_B1(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0202020202020200ULL) + 0x0000000000000200ULL) & P & 0x0202020202020000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0002020202020200ULL;
@@ -320,10 +320,10 @@ static unsigned long long flip_B1(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_C1(const unsigned long long P, const unsigned long long O)
+static u64 flip_C1(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0404040404040400ULL) + 0x0000000000000400ULL) & P & 0x0404040404040400ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0404040404040400ULL;
@@ -346,10 +346,10 @@ static unsigned long long flip_C1(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_D1(const unsigned long long P, const unsigned long long O)
+static u64 flip_D1(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_d7;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0808080808080800ULL) + 0x0000000000000800ULL) & P & 0x0808080808080800ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0808080808080800ULL;
@@ -373,10 +373,10 @@ static unsigned long long flip_D1(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_E1(const unsigned long long P, const unsigned long long O)
+static u64 flip_E1(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_d9;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x1010101010101000ULL) + 0x0000000000001000ULL) & P & 0x1010101010101000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x1010101010101000ULL;
@@ -400,10 +400,10 @@ static unsigned long long flip_E1(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_F1(const unsigned long long P, const unsigned long long O)
+static u64 flip_F1(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x2020202020202000ULL) + 0x0000000000002000ULL) & P & 0x2020202020202000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x2020202020202000ULL;
@@ -426,10 +426,10 @@ static unsigned long long flip_F1(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_G1(const unsigned long long P, const unsigned long long O)
+static u64 flip_G1(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x4040404040404000ULL) + 0x0000000000004000ULL) & P & 0x4040404040400000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0040404040404000ULL;
@@ -450,10 +450,10 @@ static unsigned long long flip_G1(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_H1(const unsigned long long P, const unsigned long long O)
+static u64 flip_H1(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x8080808080808000ULL) + 0x0000000000008000ULL) & P & 0x8080808080800000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0080808080808000ULL;
@@ -474,10 +474,10 @@ static unsigned long long flip_H1(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_A2(const unsigned long long P, const unsigned long long O)
+static u64 flip_A2(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0101010101010000ULL) + 0x0000000000010000ULL) & P & 0x0101010101000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0001010101010000ULL;
@@ -498,10 +498,10 @@ static unsigned long long flip_A2(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_B2(const unsigned long long P, const unsigned long long O)
+static u64 flip_B2(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0202020202020000ULL) + 0x0000000000020000ULL) & P & 0x0202020202000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0002020202020000ULL;
@@ -522,10 +522,10 @@ static unsigned long long flip_B2(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_C2(const unsigned long long P, const unsigned long long O)
+static u64 flip_C2(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0404040404040000ULL) + 0x0000000000040000ULL) & P & 0x0404040404000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0004040404040000ULL;
@@ -548,10 +548,10 @@ static unsigned long long flip_C2(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_D2(const unsigned long long P, const unsigned long long O)
+static u64 flip_D2(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7, outflank_d9;
+	u64 flipped, outflank_v, outflank_d7, outflank_d9;
 
 	outflank_v = ((O | ~0x0808080808080000ULL) + 0x0000000000080000ULL) & P & 0x0808080808000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0008080808080000ULL;
@@ -575,10 +575,10 @@ static unsigned long long flip_D2(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_E2(const unsigned long long P, const unsigned long long O)
+static u64 flip_E2(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7, outflank_d9;
+	u64 flipped, outflank_v, outflank_d7, outflank_d9;
 
 	outflank_v = ((O | ~0x1010101010100000ULL) + 0x0000000000100000ULL) & P & 0x1010101010000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0010101010100000ULL;
@@ -602,10 +602,10 @@ static unsigned long long flip_E2(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_F2(const unsigned long long P, const unsigned long long O)
+static u64 flip_F2(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x2020202020200000ULL) + 0x0000000000200000ULL) & P & 0x2020202020000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0020202020200000ULL;
@@ -628,10 +628,10 @@ static unsigned long long flip_F2(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_G2(const unsigned long long P, const unsigned long long O)
+static u64 flip_G2(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x4040404040400000ULL) + 0x0000000000400000ULL) & P & 0x4040404040000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0040404040400000ULL;
@@ -652,10 +652,10 @@ static unsigned long long flip_G2(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_H2(const unsigned long long P, const unsigned long long O)
+static u64 flip_H2(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x8080808080800000ULL) + 0x0000000000800000ULL) & P & 0x8080808080000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0080808080800000ULL;
@@ -676,10 +676,10 @@ static unsigned long long flip_H2(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_A3(const unsigned long long P, const unsigned long long O)
+static u64 flip_A3(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0101010101000000ULL) + 0x0000000001000000ULL) & P & 0x0101010101000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0101010101000000ULL;
@@ -704,10 +704,10 @@ static unsigned long long flip_A3(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_B3(const unsigned long long P, const unsigned long long O)
+static u64 flip_B3(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0202020202000000ULL) + 0x0000000002000000ULL) & P & 0x0202020202000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0202020202000000ULL;
@@ -732,10 +732,10 @@ static unsigned long long flip_B3(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_C3(const unsigned long long P, const unsigned long long O)
+static u64 flip_C3(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d9;
+	u64 flipped, outflank_v, outflank_d9;
 
 	outflank_v = ((O | ~0x0404040404000000ULL) + 0x0000000004000000ULL) & P & 0x0404040404000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0404040404000000ULL;
@@ -762,10 +762,10 @@ static unsigned long long flip_C3(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_D3(const unsigned long long P, const unsigned long long O)
+static u64 flip_D3(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7, outflank_d9;
+	u64 flipped, outflank_v, outflank_d7, outflank_d9;
 
 	outflank_v = ((O | ~0x0808080808000000ULL) + 0x0000000008000000ULL) & P & 0x0808080808000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x0808080808000000ULL;
@@ -795,10 +795,10 @@ static unsigned long long flip_D3(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_E3(const unsigned long long P, const unsigned long long O)
+static u64 flip_E3(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7, outflank_d9;
+	u64 flipped, outflank_v, outflank_d7, outflank_d9;
 
 	outflank_v = ((O | ~0x1010101010000000ULL) + 0x0000000010000000ULL) & P & 0x1010101010000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x1010101010000000ULL;
@@ -828,10 +828,10 @@ static unsigned long long flip_E3(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_F3(const unsigned long long P, const unsigned long long O)
+static u64 flip_F3(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x2020202020000000ULL) + 0x0000000020000000ULL) & P & 0x2020202020000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x2020202020000000ULL;
@@ -858,10 +858,10 @@ static unsigned long long flip_F3(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_G3(const unsigned long long P, const unsigned long long O)
+static u64 flip_G3(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x4040404040000000ULL) + 0x0000000040000000ULL) & P & 0x4040404040000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x4040404040000000ULL;
@@ -886,10 +886,10 @@ static unsigned long long flip_G3(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_H3(const unsigned long long P, const unsigned long long O)
+static u64 flip_H3(const u64 P, const u64 O)
 {
 	unsigned int outflank_h;
-	unsigned long long flipped, outflank_v, outflank_d7;
+	u64 flipped, outflank_v, outflank_d7;
 
 	outflank_v = ((O | ~0x8080808080000000ULL) + 0x0000000080000000ULL) & P & 0x8080808080000000ULL;
 	flipped = (outflank_v - (unsigned int) (outflank_v != 0)) & 0x8080808080000000ULL;
@@ -914,10 +914,10 @@ static unsigned long long flip_H3(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_A4(const unsigned long long P, const unsigned long long O)
+static u64 flip_A4(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, flip_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_3[(((LODWORD(O) & 0x01010100u) + ((HIDWORD(O) & 0x00010101u) << 4)) * 0x01020408u) >> 25]
 		& ((((LODWORD(P) & 0x01010101u) + ((HIDWORD(P) & 0x01010101u) << 4)) * 0x01020408u) >> 24);
@@ -931,7 +931,7 @@ static unsigned long long flip_A4(const unsigned long long P, const unsigned lon
 	flipped |= flip_d7 & -(flip_d7 & (LODWORD(P) << 7));
 
 	outflank_d9 = ((HIDWORD(O) | ~0x10080402u) + 0x00000002u) & HIDWORD(P) & 0x10080400u;
-	flipped |= (unsigned long long) ((outflank_d9 - (unsigned int) (outflank_d9 != 0)) & 0x00080402u) << 32;
+	flipped |= (u64) ((outflank_d9 - (unsigned int) (outflank_d9 != 0)) & 0x00080402u) << 32;
 
 	return flipped;
 }
@@ -943,10 +943,10 @@ static unsigned long long flip_A4(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_B4(const unsigned long long P, const unsigned long long O)
+static u64 flip_B4(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, flip_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_3[(((LODWORD(O) & 0x02020200u) + ((HIDWORD(O) & 0x00020202u) << 4)) * 0x00810204u) >> 25]
 		& ((((LODWORD(P) & 0x02020202u) + ((HIDWORD(P) & 0x02020202u) << 4)) * 0x00810204u) >> 24);
@@ -960,7 +960,7 @@ static unsigned long long flip_B4(const unsigned long long P, const unsigned lon
 	flipped |= flip_d7 & -(flip_d7 & (LODWORD(P) << 7));
 
 	outflank_d9 = ((HIDWORD(O) | ~0x20100804u) + 0x00000004u) & HIDWORD(P) & 0x20100800u;
-	flipped |= (unsigned long long) ((outflank_d9 - (unsigned int) (outflank_d9 != 0)) & 0x00100804u) << 32;
+	flipped |= (u64) ((outflank_d9 - (unsigned int) (outflank_d9 != 0)) & 0x00100804u) << 32;
 
 	return flipped;
 }
@@ -972,10 +972,10 @@ static unsigned long long flip_B4(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_C4(const unsigned long long P, const unsigned long long O)
+static u64 flip_C4(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_3[(((LODWORD(O) & 0x04040400u) + ((HIDWORD(O) & 0x00040404u) << 4)) * 0x00408102u) >> 25]
 		& ((((LODWORD(P) & 0x04040404u) + ((HIDWORD(P) & 0x04040404u) << 4)) * 0x00408102u) >> 24);
@@ -1002,10 +1002,10 @@ static unsigned long long flip_C4(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_D4(const unsigned long long P, const unsigned long long O)
+static u64 flip_D4(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_3[(((LODWORD(O) & 0x08080800u) + ((HIDWORD(O) & 0x00080808u) << 4)) * 0x00204081u) >> 25]
 		& ((((LODWORD(P) & 0x08080808u) + ((HIDWORD(P) & 0x08080808u) << 4)) * 0x00204081u) >> 24);
@@ -1032,10 +1032,10 @@ static unsigned long long flip_D4(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_E4(const unsigned long long P, const unsigned long long O)
+static u64 flip_E4(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_3[((((LODWORD(O) & 0x10101000u) >> 4) + (HIDWORD(O) & 0x00101010u)) * 0x01020408u) >> 25]
 		& (((((LODWORD(P) & 0x10101010u) >> 4) + (HIDWORD(P) & 0x10101010u)) * 0x01020408u) >> 24);
@@ -1062,10 +1062,10 @@ static unsigned long long flip_E4(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_F4(const unsigned long long P, const unsigned long long O)
+static u64 flip_F4(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_3[((((LODWORD(O) & 0x20202000u) >> 4) + (HIDWORD(O) & 0x00202020u)) * 0x00810204u) >> 25]
 		& (((((LODWORD(P) & 0x20202020u) >> 4) + (HIDWORD(P) & 0x20202020u)) * 0x00810204u) >> 24);
@@ -1092,10 +1092,10 @@ static unsigned long long flip_F4(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_G4(const unsigned long long P, const unsigned long long O)
+static u64 flip_G4(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, flip_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_3[((((LODWORD(O) & 0x40404000u) >> 4) + (HIDWORD(O) & 0x00404040u)) * 0x00408102u) >> 25]
 		& (((((LODWORD(P) & 0x40404040u) >> 4) + (HIDWORD(P) & 0x40404040u)) * 0x00408102u) >> 24);
@@ -1105,7 +1105,7 @@ static unsigned long long flip_G4(const unsigned long long P, const unsigned lon
 	flipped |= ((-outflank_h) & 0x3e) << 24;
 
 	outflank_d7 = ((HIDWORD(O) | ~0x04081020u) + 0x00000020u) & HIDWORD(P) & 0x04081000u;
-	flipped |= (unsigned long long) ((outflank_d7 - (unsigned int) (outflank_d7 != 0)) & 0x00081020u) << 32;
+	flipped |= (u64) ((outflank_d7 - (unsigned int) (outflank_d7 != 0)) & 0x00081020u) << 32;
 
 	flip_d9 = LODWORD(O) & 0x00200000u;
 	flip_d9 |= (flip_d9 >> 9) & LODWORD(O);
@@ -1121,10 +1121,10 @@ static unsigned long long flip_G4(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_H4(const unsigned long long P, const unsigned long long O)
+static u64 flip_H4(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, flip_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_3[((((LODWORD(O) & 0x80808000u) >> 4) + (HIDWORD(O) & 0x00808080u)) * 0x00204081u) >> 25]
 		& (((((LODWORD(P) & 0x80808080u) >> 4) + (HIDWORD(P) & 0x80808080u)) * 0x00204081u) >> 24);
@@ -1134,7 +1134,7 @@ static unsigned long long flip_H4(const unsigned long long P, const unsigned lon
 	flipped |= ((-outflank_h) & 0x3f) << 25;
 
 	outflank_d7 = ((HIDWORD(O) | ~0x08102040u) + 0x00000040u) & HIDWORD(P) & 0x08102000u;
-	flipped |= (unsigned long long) ((outflank_d7 - (unsigned int) (outflank_d7 != 0)) & 0x00102040u) << 32;
+	flipped |= (u64) ((outflank_d7 - (unsigned int) (outflank_d7 != 0)) & 0x00102040u) << 32;
 
 	flip_d9 = LODWORD(O) & 0x00400000u;
 	flip_d9 |= (flip_d9 >> 9) & LODWORD(O);
@@ -1150,24 +1150,24 @@ static unsigned long long flip_H4(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_A5(const unsigned long long P, const unsigned long long O)
+static u64 flip_A5(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, flip_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_4[(((LODWORD(O) & 0x01010100u) + ((HIDWORD(O) & 0x00010101u) << 4)) * 0x01020408u) >> 25]
 		& ((((LODWORD(P) & 0x01010101u) + ((HIDWORD(P) & 0x01010101u) << 4)) * 0x01020408u) >> 24);
 	flipped = FLIPPED_4_V[outflank_v] & 0x0001010101010100ULL;
 
 	outflank_h = ((HIDWORD(O) & 0x0000007eu) + 0x00000002u) & HIDWORD(P);
-	flipped |= (unsigned long long) ((((outflank_h << 8) - outflank_h) >> 8) & 0x0000007eu) << 32;
+	flipped |= (u64) ((((outflank_h << 8) - outflank_h) >> 8) & 0x0000007eu) << 32;
 
 	flip_d7 = LODWORD(O) & ((LODWORD(O) >> 7) | 0x02000000u);
 	flip_d7 &= ((flip_d7 & 0x02040000u) >> 14) | 0x02040000u;
 	flipped |= flip_d7 & -(flip_d7 & (LODWORD(P) << 7));
 
 	outflank_d9 = ((HIDWORD(O) | ~0x08040200u) + 0x00000200u) & HIDWORD(P) & 0x08040000u;
-	flipped |= (unsigned long long) ((outflank_d9 - (unsigned int) (outflank_d9 != 0)) & 0x00040200u) << 32;
+	flipped |= (u64) ((outflank_d9 - (unsigned int) (outflank_d9 != 0)) & 0x00040200u) << 32;
 
 	return flipped;
 }
@@ -1179,24 +1179,24 @@ static unsigned long long flip_A5(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_B5(const unsigned long long P, const unsigned long long O)
+static u64 flip_B5(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, flip_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_4[(((LODWORD(O) & 0x02020200u) + ((HIDWORD(O) & 0x00020202u) << 4)) * 0x00810204u) >> 25]
 		& ((((LODWORD(P) & 0x02020202u) + ((HIDWORD(P) & 0x02020202u) << 4)) * 0x00810204u) >> 24);
 	flipped = FLIPPED_4_V[outflank_v] & 0x0002020202020200ULL;
 
 	outflank_h = ((HIDWORD(O) & 0x0000007cu) + 0x00000004u) & (P >> 32);
-	flipped |= (unsigned long long) ((((outflank_h << 8) - outflank_h) >> 8) & 0x0000007cu) << 32;
+	flipped |= (u64) ((((outflank_h << 8) - outflank_h) >> 8) & 0x0000007cu) << 32;
 
 	flip_d7 = LODWORD(O) & ((LODWORD(O) >> 7) | 0x04000000u);
 	flip_d7 &= ((flip_d7 & 0x04080000u) >> 14) | 0x04080000u;
 	flipped |= flip_d7 & -(flip_d7 & (LODWORD(P) << 7));
 
 	outflank_d9 = ((HIDWORD(O) | ~0x10080400u) + 0x00000400u) & HIDWORD(P) & 0x10080000u;
-	flipped |= (unsigned long long) ((outflank_d9 - (unsigned int) (outflank_d9 != 0)) & 0x00080400u) << 32;
+	flipped |= (u64) ((outflank_d9 - (unsigned int) (outflank_d9 != 0)) & 0x00080400u) << 32;
 
 	return flipped;
 }
@@ -1208,10 +1208,10 @@ static unsigned long long flip_B5(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_C5(const unsigned long long P, const unsigned long long O)
+static u64 flip_C5(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_4[(((LODWORD(O) & 0x04040400u) + ((HIDWORD(O) & 0x00040404u) << 4)) * 0x00408102u) >> 25]
 		& ((((LODWORD(P) & 0x04040404u) + ((HIDWORD(P) & 0x04040404u) << 4)) * 0x00408102u) >> 24);
@@ -1238,10 +1238,10 @@ static unsigned long long flip_C5(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_D5(const unsigned long long P, const unsigned long long O)
+static u64 flip_D5(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_4[(((LODWORD(O) & 0x08080800u) + ((HIDWORD(O) & 0x00080808u) << 4)) * 0x00204081u) >> 25]
 		& ((((LODWORD(P) & 0x08080808u) + ((HIDWORD(P) & 0x08080808u) << 4)) * 0x00204081u) >> 24);
@@ -1268,10 +1268,10 @@ static unsigned long long flip_D5(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_E5(const unsigned long long P, const unsigned long long O)
+static u64 flip_E5(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_4[((((LODWORD(O) & 0x10101000u) >> 4) + (HIDWORD(O) & 0x00101010u)) * 0x01020408u) >> 25]
 		& (((((LODWORD(P) & 0x10101010u) >> 4) + (HIDWORD(P) & 0x10101010u)) * 0x01020408u) >> 24);
@@ -1298,10 +1298,10 @@ static unsigned long long flip_E5(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_F5(const unsigned long long P, const unsigned long long O)
+static u64 flip_F5(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_4[((((LODWORD(O) & 0x20202000u) >> 4) + (HIDWORD(O) & 0x00202020u)) * 0x00810204u) >> 25]
 		& (((((LODWORD(P) & 0x20202020u) >> 4) + (HIDWORD(P) & 0x20202020u)) * 0x00810204u) >> 24);
@@ -1328,20 +1328,20 @@ static unsigned long long flip_F5(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_G5(const unsigned long long P, const unsigned long long O)
+static u64 flip_G5(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, flip_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_4[((((LODWORD(O) & 0x40404000u) >> 4) + (HIDWORD(O) & 0x00404040u)) * 0x00408102u) >> 25]
 		& (((((LODWORD(P) & 0x40404040u) >> 4) + (HIDWORD(P) & 0x40404040u)) * 0x00408102u) >> 24);
 	flipped = FLIPPED_4_V[outflank_v] & 0x0040404040404000ULL;
 
 	outflank_h = OUTFLANK_7[(O >> 32) & 0x3e] & (P >> 31);
-	flipped |= (unsigned long long) ((-outflank_h) & 0x3e) << 32;
+	flipped |= (u64) ((-outflank_h) & 0x3e) << 32;
 
 	outflank_d7 = ((HIDWORD(O) | ~0x08102000u) + 0x00002000u) & HIDWORD(P) & 0x08100000u;
-	flipped |= (unsigned long long) ((outflank_d7 - (unsigned int) (outflank_d7 != 0)) & 0x00102000u) << 32;
+	flipped |= (u64) ((outflank_d7 - (unsigned int) (outflank_d7 != 0)) & 0x00102000u) << 32;
 
 	flip_d9 = LODWORD(O) & ((LODWORD(O) >> 9) | 0x20000000u);
 	flip_d9 &= ((flip_d9 & 0x20100000u) >> 18) | 0x20100000u;
@@ -1357,20 +1357,20 @@ static unsigned long long flip_G5(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_H5(const unsigned long long P, const unsigned long long O)
+static u64 flip_H5(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, flip_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_4[((((LODWORD(O) & 0x80808000u) >> 4) + (HIDWORD(O) & 0x00808080u)) * 0x00204081u) >> 25]
 		& (((((LODWORD(P) & 0x80808080u) >> 4) + (HIDWORD(P) & 0x80808080u)) * 0x00204081u) >> 24);
 	flipped = FLIPPED_4_V[outflank_v] & 0x0080808080808000ULL;
 
 	outflank_h = OUTFLANK_7[(O >> 33) & 0x3f] & (P >> 32);
-	flipped |= (unsigned long long) ((-outflank_h) & 0x3f) << 33;
+	flipped |= (u64) ((-outflank_h) & 0x3f) << 33;
 
 	outflank_d7 = ((HIDWORD(O) | ~0x10204000u) + 0x00004000u) & HIDWORD(P) & 0x10200000u;
-	flipped |= (unsigned long long) ((outflank_d7 - (unsigned int) (outflank_d7 != 0)) & 0x00204000u) << 32;
+	flipped |= (u64) ((outflank_d7 - (unsigned int) (outflank_d7 != 0)) & 0x00204000u) << 32;
 
 	flip_d9 = LODWORD(O) & ((LODWORD(O) >> 9) | 0x40000000u);
 	flip_d9 &= ((flip_d9 & 0x40200000u) >> 18) | 0x40200000u;
@@ -1386,24 +1386,24 @@ static unsigned long long flip_H5(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_A6(const unsigned long long P, const unsigned long long O)
+static u64 flip_A6(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, flip_d7;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_5[(((LODWORD(O) & 0x01010100u) + ((HIDWORD(O) & 0x00010101u) << 4)) * 0x01020408u) >> 25]
 		& ((((LODWORD(P) & 0x01010101u) + ((HIDWORD(P) & 0x01010101u) << 4)) * 0x01020408u) >> 24);
 	flipped = FLIPPED_5_V[outflank_v] & 0x0001010101010100ULL;
 
 	outflank_h = ((HIDWORD(O) & 0x00007e00u) + 0x00000200u) & HIDWORD(P);
-	flipped |= (unsigned long long) ((outflank_h - (outflank_h >> 8)) & 0x00007e00u) << 32;
+	flipped |= (u64) ((outflank_h - (outflank_h >> 8)) & 0x00007e00u) << 32;
 
 	flip_d7 = (unsigned int) (O >> 8);
 	flip_d7 &= (flip_d7 >> 7) | 0x02000000u;
 	flip_d7 &= ((flip_d7 & 0x02040000u) >> 14) | 0x02040000u;
-	flipped |= (unsigned long long) (flip_d7 & -(flip_d7 & (LODWORD(P) >> 1))) << 8;
+	flipped |= (u64) (flip_d7 & -(flip_d7 & (LODWORD(P) >> 1))) << 8;
 
-	flipped |= (unsigned long long) ((HIDWORD(P) >> 9) & 0x00020000u & HIDWORD(O)) << 32;
+	flipped |= (u64) ((HIDWORD(P) >> 9) & 0x00020000u & HIDWORD(O)) << 32;
 
 	return flipped;
 }
@@ -1415,24 +1415,24 @@ static unsigned long long flip_A6(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_B6(const unsigned long long P, const unsigned long long O)
+static u64 flip_B6(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, flip_d7;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_5[(((LODWORD(O) & 0x02020200u) + ((HIDWORD(O) & 0x00020202u) << 4)) * 0x00810204u) >> 25]
 		& ((((LODWORD(P) & 0x02020202u) + ((HIDWORD(P) & 0x02020202u) << 4)) * 0x00810204u) >> 24);
 	flipped = FLIPPED_5_V[outflank_v] & 0x0002020202020200ULL;
 
 	outflank_h = ((HIDWORD(O) & 0x00007c00u) + 0x00000400u) & HIDWORD(P);
-	flipped |= (unsigned long long) ((outflank_h - (outflank_h >> 8)) & 0x00007c00u) << 32;
+	flipped |= (u64) ((outflank_h - (outflank_h >> 8)) & 0x00007c00u) << 32;
 
 	flip_d7 = (unsigned int) (O >> 8);
 	flip_d7 &= (flip_d7 >> 7) | 0x04000000u;
 	flip_d7 &= ((flip_d7 & 0x04080000u) >> 14) | 0x04080000u;
-	flipped |= (unsigned long long) (flip_d7 & -(flip_d7 & (LODWORD(P) >> 1))) << 8;
+	flipped |= (u64) (flip_d7 & -(flip_d7 & (LODWORD(P) >> 1))) << 8;
 
-	flipped |= (unsigned long long) ((HIDWORD(P) >> 9) & 0x00040000u & HIDWORD(O)) << 32;
+	flipped |= (u64) ((HIDWORD(P) >> 9) & 0x00040000u & HIDWORD(O)) << 32;
 
 	return flipped;
 }
@@ -1444,10 +1444,10 @@ static unsigned long long flip_B6(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_C6(const unsigned long long P, const unsigned long long O)
+static u64 flip_C6(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_5[(((LODWORD(O) & 0x04040400u) + ((HIDWORD(O) & 0x00040404u) << 4)) * 0x00408102u) >> 25]
 		& ((((LODWORD(P) & 0x04040404u) + ((HIDWORD(P) & 0x04040404u) << 4)) * 0x00408102u) >> 24);
@@ -1460,7 +1460,7 @@ static unsigned long long flip_C6(const unsigned long long P, const unsigned lon
 		& ((((LODWORD(P) & 0x10204080u) + (HIDWORD(P) & 0x01020408u)) * 0x01010101u) >> 24);
 	flipped |= FLIPPED_2_H[outflank_d7] & 0x0002040810204000ULL;
 
-	flipped |= (unsigned long long) (((HIDWORD(P) >> 9) | (LODWORD(P) >> 23)) & 0x00080002u & HIDWORD(O)) << 32;
+	flipped |= (u64) (((HIDWORD(P) >> 9) | (LODWORD(P) >> 23)) & 0x00080002u & HIDWORD(O)) << 32;
 
 	return flipped;
 }
@@ -1472,10 +1472,10 @@ static unsigned long long flip_C6(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_D6(const unsigned long long P, const unsigned long long O)
+static u64 flip_D6(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_5[(((LODWORD(O) & 0x08080800u) + ((HIDWORD(O) & 0x00080808u) << 4)) * 0x00204081u) >> 25]
 		& ((((LODWORD(P) & 0x08080808u) + ((HIDWORD(P) & 0x08080808u) << 4)) * 0x00204081u) >> 24);
@@ -1502,10 +1502,10 @@ static unsigned long long flip_D6(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_E6(const unsigned long long P, const unsigned long long O)
+static u64 flip_E6(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d7, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_5[((((LODWORD(O) & 0x10101000u) >> 4) + (HIDWORD(O) & 0x00101010u)) * 0x01020408u) >> 25]
 		& (((((LODWORD(P) & 0x10101010u) >> 4) + (HIDWORD(P) & 0x10101010u)) * 0x01020408u) >> 24);
@@ -1532,10 +1532,10 @@ static unsigned long long flip_E6(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_F6(const unsigned long long P, const unsigned long long O)
+static u64 flip_F6(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_5[((((LODWORD(O) & 0x20202000u) >> 4) + (HIDWORD(O) & 0x00202020u)) * 0x00810204u) >> 25]
 		& (((((LODWORD(P) & 0x20202020u) >> 4) + (HIDWORD(P) & 0x20202020u)) * 0x00810204u) >> 24);
@@ -1544,7 +1544,7 @@ static unsigned long long flip_F6(const unsigned long long P, const unsigned lon
 	outflank_h = OUTFLANK_5[(O >> 41) & 0x3f] & (P >> 40);
 	flipped |= FLIPPED_5_H[outflank_h] & 0x0000ff0000000000ULL;
 
-	flipped |= (unsigned long long) (((HIDWORD(P) >> 7) | (LODWORD(P) >> 25)) & 0x00100040u & HIDWORD(O)) << 32;
+	flipped |= (u64) (((HIDWORD(P) >> 7) | (LODWORD(P) >> 25)) & 0x00100040u & HIDWORD(O)) << 32;
 
 	outflank_d9 = OUTFLANK_5[(((LODWORD(O) & 0x08040200u) + (HIDWORD(O) & 0x00402010u)) * 0x01010101u) >> 25]
 		& ((((LODWORD(P) & 0x08040201u) + (HIDWORD(P) & 0x80402010u)) * 0x01010101u) >> 24);
@@ -1560,24 +1560,24 @@ static unsigned long long flip_F6(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_G6(const unsigned long long P, const unsigned long long O)
+static u64 flip_G6(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, flip_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_5[((((LODWORD(O) & 0x40404000u) >> 4) + (HIDWORD(O) & 0x00404040u)) * 0x00408102u) >> 25]
 		& (((((LODWORD(P) & 0x40404040u) >> 4) + (HIDWORD(P) & 0x40404040u)) * 0x00408102u) >> 24);
 	flipped = FLIPPED_5_V[outflank_v] & 0x0040404040404000ULL;
 
 	outflank_h = OUTFLANK_7[(O >> 40) & 0x3e] & (P >> 39);
-	flipped |= (unsigned long long) ((-outflank_h) & 0x3e) << 40;
+	flipped |= (u64) ((-outflank_h) & 0x3e) << 40;
 
-	flipped |= (unsigned long long) ((HIDWORD(P) >> 7) & 0x00200000u & HIDWORD(O)) << 32;
+	flipped |= (u64) ((HIDWORD(P) >> 7) & 0x00200000u & HIDWORD(O)) << 32;
 
 	flip_d9 = (unsigned int) (O >> 8);
 	flip_d9 &= (flip_d9 >> 9) | 0x20000000u;
 	flip_d9 &= ((flip_d9 & 0x20100000u) >> 18) | 0x20100000u;
-	flipped |= (unsigned long long) (flip_d9 & -(flip_d9 & (LODWORD(P) << 1))) << 8;
+	flipped |= (u64) (flip_d9 & -(flip_d9 & (LODWORD(P) << 1))) << 8;
 
 	return flipped;
 }
@@ -1589,24 +1589,24 @@ static unsigned long long flip_G6(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_H6(const unsigned long long P, const unsigned long long O)
+static u64 flip_H6(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, flip_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = OUTFLANK_5[((((LODWORD(O) & 0x80808000u) >> 4) + (HIDWORD(O) & 0x00808080u)) * 0x00204081u) >> 25]
 		& (((((LODWORD(P) & 0x80808080u) >> 4) + (HIDWORD(P) & 0x80808080u)) * 0x00204081u) >> 24);
 	flipped = FLIPPED_5_V[outflank_v] & 0x0080808080808000ULL;
 
 	outflank_h = OUTFLANK_7[(O >> 41) & 0x3f] & (P >> 40);
-	flipped |= (unsigned long long) ((-outflank_h) & 0x3f) << 41;
+	flipped |= (u64) ((-outflank_h) & 0x3f) << 41;
 
-	flipped |= (unsigned long long) ((HIDWORD(P) >> 7) & 0x00400000u & HIDWORD(O)) << 32;
+	flipped |= (u64) ((HIDWORD(P) >> 7) & 0x00400000u & HIDWORD(O)) << 32;
 
 	flip_d9 = (unsigned int) (O >> 8);
 	flip_d9 &= (flip_d9 >> 9) | 0x40000000u;
 	flip_d9 &= ((flip_d9 & 0x40200000u) >> 18) | 0x40200000u;
-	flipped |= (unsigned long long) (flip_d9 & -(flip_d9 & (LODWORD(P) << 1))) << 8;
+	flipped |= (u64) (flip_d9 & -(flip_d9 & (LODWORD(P) << 1))) << 8;
 
 	return flipped;
 }
@@ -1618,17 +1618,17 @@ static unsigned long long flip_H6(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_A7(const unsigned long long P, const unsigned long long O)
+static u64 flip_A7(const u64 P, const u64 O)
 {
 	unsigned int outflank_v, outflank_h, outflank_d7;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x01010100u) << 4) + (HIDWORD(O) & 0x00000101u)) * 0x08040201u) >> 24) + 4)
 		& (((((LODWORD(P) & 0x01010101u) << 4) + (HIDWORD(P) & 0x00000001u)) * 0x08040201u) >> 24);
 	flipped = (outflank_v * 0x0000003e1e0e0602ULL) & 0x0000010101010100ULL;
 
 	outflank_h = ((HIDWORD(O) & 0x007e0000u) + 0x00020000u) & HIDWORD(P);
-	flipped |= (unsigned long long) ((outflank_h - (outflank_h >> 8)) & 0x007e0000u) << 32;
+	flipped |= (u64) ((outflank_h - (outflank_h >> 8)) & 0x007e0000u) << 32;
 
 	outflank_d7 = (((((LODWORD(O) & 0x08102000u) + (HIDWORD(O) & 0x00000204u)) * 0x01010101u) >> 24) + 2)
 		& ((((LODWORD(P) & 0x08102040u) + (HIDWORD(P) & 0x00000004u)) * 0x01010101u) >> 24);
@@ -1644,17 +1644,17 @@ static unsigned long long flip_A7(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_B7(const unsigned long long P, const unsigned long long O)
+static u64 flip_B7(const u64 P, const u64 O)
 {
 	unsigned int outflank_v, outflank_h, outflank_d7;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x02020200u) << 3) + ((HIDWORD(O) & 0x00000202u) >> 1)) * 0x08040201u) >> 24) + 4)
 		& (((((LODWORD(P) & 0x02020202u) << 3) + ((HIDWORD(P) & 0x00000002u) >> 1)) * 0x08040201u) >> 24);
 	flipped = (outflank_v * 0x0000007c3c1c0c04ULL) & 0x0000020202020200ULL;
 
 	outflank_h = ((HIDWORD(O) & 0x007c0000u) + 0x00040000u) & HIDWORD(P);
-	flipped |= (unsigned long long) ((outflank_h - (outflank_h >> 8)) & 0x007c0000u) << 32;
+	flipped |= (u64) ((outflank_h - (outflank_h >> 8)) & 0x007c0000u) << 32;
 
 	outflank_d7 = (((((LODWORD(O) & 0x10204000u) + (HIDWORD(O) & 0x00000408u)) * 0x01010101u) >> 25) + 2)
 		& ((((LODWORD(P) & 0x10204080u) + (HIDWORD(P) & 0x00000008u)) * 0x01010101u) >> 25);
@@ -1670,10 +1670,10 @@ static unsigned long long flip_B7(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_C7(const unsigned long long P, const unsigned long long O)
+static u64 flip_C7(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x04040400u) << 2) + ((HIDWORD(O) & 0x00000404u) >> 2)) * 0x08040201u) >> 24) + 4)
 		& (((((LODWORD(P) & 0x04040404u) << 2) + ((HIDWORD(P) & 0x00000004u) >> 2)) * 0x08040201u) >> 24);
@@ -1696,10 +1696,10 @@ static unsigned long long flip_C7(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_D7(const unsigned long long P, const unsigned long long O)
+static u64 flip_D7(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x08080800u) << 1) + ((HIDWORD(O) & 0x00000808u) >> 3)) * 0x08040201u) >> 24) + 4)
 		& (((((LODWORD(P) & 0x08080808u) << 1) + ((HIDWORD(P) & 0x00000008u) >> 3)) * 0x08040201u) >> 24);
@@ -1722,10 +1722,10 @@ static unsigned long long flip_D7(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_E7(const unsigned long long P, const unsigned long long O)
+static u64 flip_E7(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = (((((LODWORD(O) & 0x10101000u) + ((HIDWORD(O) & 0x00001010u) >> 4)) * 0x08040201u) >> 24) + 4)
 		& ((((LODWORD(P) & 0x10101010u) + ((HIDWORD(P) & 0x00000010u) >> 4)) * 0x08040201u) >> 24);
@@ -1748,10 +1748,10 @@ static unsigned long long flip_E7(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_F7(const unsigned long long P, const unsigned long long O)
+static u64 flip_F7(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x20202000u) >> 1) + ((HIDWORD(O) & 0x00002020u) >> 5)) * 0x08040201u) >> 24) + 4)
 		& (((((LODWORD(P) & 0x20202020u) >> 1) + ((HIDWORD(P) & 0x00000020u) >> 5)) * 0x08040201u) >> 24);
@@ -1774,17 +1774,17 @@ static unsigned long long flip_F7(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_G7(const unsigned long long P, const unsigned long long O)
+static u64 flip_G7(const u64 P, const u64 O)
 {
 	unsigned int outflank_v, outflank_h, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x40404000u) >> 2) + ((HIDWORD(O) & 0x00004040u) >> 6)) * 0x08040201u) >> 24) + 4)
 		& (((((LODWORD(P) & 0x40404040u) >> 2) + ((HIDWORD(P) & 0x00000040u) >> 6)) * 0x08040201u) >> 24);
 	flipped = (outflank_v * 0x00000f8783818080ULL) & 0x0000404040404000ULL;
 
 	outflank_h = OUTFLANK_7[(O >> 48) & 0x3e] & (P >> 47);
-	flipped |= (unsigned long long) ((-outflank_h) & 0x3e) << 48;
+	flipped |= (u64) ((-outflank_h) & 0x3e) << 48;
 
 	outflank_d9 = OUTFLANK_7[(((LODWORD(O) & 0x08040200u) + (HIDWORD(O) & 0x00002010u)) * 0x01010101u) >> 24]
 		& ((((LODWORD(P) & 0x08040201u) + (HIDWORD(P) & 0x00000010u)) * 0x01010101u) >> 23);
@@ -1800,17 +1800,17 @@ static unsigned long long flip_G7(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_H7(const unsigned long long P, const unsigned long long O)
+static u64 flip_H7(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x80808000u) >> 3) + ((HIDWORD(O) & 0x00008080u) >> 7)) * 0x08040201u) >> 24) + 4)
 		& (((((LODWORD(P) & 0x80808080u) >> 3) + ((HIDWORD(P) & 0x00000080u) >> 7)) * 0x08040201u) >> 24);
 	flipped = (outflank_v * 0x00001f0f07030100ULL) & 0x0000808080808000ULL;
 
 	outflank_h = OUTFLANK_7[(O >> 49) & 0x3f] & (P >> 48);
-	flipped |= (unsigned long long) ((-outflank_h) & 0x3f) << 49;
+	flipped |= (u64) ((-outflank_h) & 0x3f) << 49;
 
 	outflank_d9 = OUTFLANK_7[(((LODWORD(O) & 0x10080400u) + (HIDWORD(O) & 0x00004020u)) * 0x01010101u) >> 25]
 		& ((((LODWORD(P) & 0x10080402u) + (HIDWORD(P) & 0x00000020u)) * 0x01010101u) >> 24);
@@ -1826,17 +1826,17 @@ static unsigned long long flip_H7(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_A8(const unsigned long long P, const unsigned long long O)
+static u64 flip_A8(const u64 P, const u64 O)
 {
 	unsigned int outflank_v, outflank_h, outflank_d7;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x01010100u) << 4) + (HIDWORD(O) & 0x00010101u)) * 0x08040201u) >> 24) + 2)
 		& (((((LODWORD(P) & 0x01010101u) << 4) + (HIDWORD(P) & 0x00000101u)) * 0x08040201u) >> 24);
 	flipped = (outflank_v * 0x00007e3e1e0e0602ULL) & 0x0001010101010100ULL;
 
 	outflank_h = ((HIDWORD(O) & 0x7e000000u) + 0x02000000u) & HIDWORD(P);
-	flipped |= (unsigned long long) ((outflank_h - (outflank_h >> 8)) & 0x7e000000u) << 32;
+	flipped |= (u64) ((outflank_h - (outflank_h >> 8)) & 0x7e000000u) << 32;
 
 	outflank_d7 = (((((LODWORD(O) & 0x10204000u) + (HIDWORD(O) & 0x00020408u)) * 0x01010101u) >> 24) + 2)
 		& ((((LODWORD(P) & 0x10204080u) + (HIDWORD(P) & 0x00000408u)) * 0x01010101u) >> 24);
@@ -1852,17 +1852,17 @@ static unsigned long long flip_A8(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_B8(const unsigned long long P, const unsigned long long O)
+static u64 flip_B8(const u64 P, const u64 O)
 {
 	unsigned int outflank_v, outflank_h, outflank_d7;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x02020200u) << 3) + ((HIDWORD(O) & 0x00020202u) >> 1)) * 0x08040201u) >> 24) + 2)
 		& (((((LODWORD(P) & 0x02020202u) << 3) + ((HIDWORD(P) & 0x00000202u) >> 1)) * 0x08040201u) >> 24);
 	flipped = (outflank_v * 0x0000fc7c3c1c0c04ULL) & 0x0002020202020200ULL;
 
 	outflank_h = ((HIDWORD(O) & 0x7c000000u) + 0x04000000u) & HIDWORD(P);
-	flipped |= (unsigned long long) ((outflank_h - (outflank_h >> 8)) & 0x7c000000u) << 32;
+	flipped |= (u64) ((outflank_h - (outflank_h >> 8)) & 0x7c000000u) << 32;
 
 	outflank_d7 = (((((LODWORD(O) & 0x20400000u) + (HIDWORD(O) & 0x00040810u)) * 0x01010101u) >> 25) + 2)
 		& ((((LODWORD(P) & 0x20408000u) + (HIDWORD(P) & 0x00000810u)) * 0x01010101u) >> 25);
@@ -1878,10 +1878,10 @@ static unsigned long long flip_B8(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_C8(const unsigned long long P, const unsigned long long O)
+static u64 flip_C8(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x04040400u) << 2) + ((HIDWORD(O) & 0x00040404u) >> 2)) * 0x08040201u) >> 24) + 2)
 		& (((((LODWORD(P) & 0x04040404u) << 2) + ((HIDWORD(P) & 0x00000404u) >> 2)) * 0x08040201u) >> 24);
@@ -1904,10 +1904,10 @@ static unsigned long long flip_C8(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_D8(const unsigned long long P, const unsigned long long O)
+static u64 flip_D8(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x08080800u) << 1) + ((HIDWORD(O) & 0x00080808u) >> 3)) * 0x08040201u) >> 24) + 2)
 		& (((((LODWORD(P) & 0x08080808u) << 1) + ((HIDWORD(P) & 0x00000808u) >> 3)) * 0x08040201u) >> 24);
@@ -1930,10 +1930,10 @@ static unsigned long long flip_D8(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_E8(const unsigned long long P, const unsigned long long O)
+static u64 flip_E8(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = (((((LODWORD(O) & 0x10101000u) + ((HIDWORD(O) & 0x00101010u) >> 4)) * 0x08040201u) >> 24) + 2)
 		& ((((LODWORD(P) & 0x10101010u) + ((HIDWORD(P) & 0x00001010u) >> 4)) * 0x08040201u) >> 24);
@@ -1956,10 +1956,10 @@ static unsigned long long flip_E8(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_F8(const unsigned long long P, const unsigned long long O)
+static u64 flip_F8(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x20202000u) >> 1) + ((HIDWORD(O) & 0x00202020u) >> 5)) * 0x08040201u) >> 24) + 2)
 		& (((((LODWORD(P) & 0x20202020u) >> 1) + ((HIDWORD(P) & 0x00002020u) >> 5)) * 0x08040201u) >> 24);
@@ -1982,17 +1982,17 @@ static unsigned long long flip_F8(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_G8(const unsigned long long P, const unsigned long long O)
+static u64 flip_G8(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x40404000u) >> 2) + ((HIDWORD(O) & 0x00404040u) >> 6)) * 0x08040201u) >> 24) + 2)
 		& (((((LODWORD(P) & 0x40404040u) >> 2) + ((HIDWORD(P) & 0x00004040u) >> 6)) * 0x08040201u) >> 24);
 	flipped = (outflank_v * 0x001f8f8783818080ULL) & 0x0040404040404000ULL;
 
 	outflank_h = OUTFLANK_7[(O >> 56) & 0x3e] & (P >> 55);
-	flipped |= (unsigned long long) ((-outflank_h) & 0x3e) << 56;
+	flipped |= (u64) ((-outflank_h) & 0x3e) << 56;
 
 	outflank_d9 = OUTFLANK_7[(((LODWORD(O) & 0x04020000u) + (HIDWORD(O) & 0x00201008u)) * 0x01010101u) >> 24]
 		& ((((LODWORD(P) & 0x04020100u) + (HIDWORD(P) & 0x00001008u)) * 0x01010101u) >> 23);
@@ -2008,17 +2008,17 @@ static unsigned long long flip_G8(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_H8(const unsigned long long P, const unsigned long long O)
+static u64 flip_H8(const u64 P, const u64 O)
 {
 	unsigned int outflank_h, outflank_v, outflank_d9;
-	unsigned long long flipped;
+	u64 flipped;
 
 	outflank_v = ((((((LODWORD(O) & 0x80808000u) >> 3) + ((HIDWORD(O) & 0x00808080u) >> 7)) * 0x08040201u) >> 24) + 2)
 		& (((((LODWORD(P) & 0x80808080u) >> 3) + ((HIDWORD(P) & 0x00008080u) >> 7)) * 0x08040201u) >> 24);
 	flipped = (outflank_v * 0x003f1f0f07030100ULL) & 0x0080808080808000ULL;
 
 	outflank_h = OUTFLANK_7[(O >> 57) & 0x3f] & (P >> 56);
-	flipped |= (unsigned long long) ((-outflank_h) & 0x3f) << 57;
+	flipped |= (u64) ((-outflank_h) & 0x3f) << 57;
 
 	outflank_d9 = OUTFLANK_7[(((LODWORD(O) & 0x08040200u) + (HIDWORD(O) & 0x00402010u)) * 0x01010101u) >> 25]
 		& ((((LODWORD(P) & 0x08040201u) + (HIDWORD(P) & 0x00002010u)) * 0x01010101u) >> 24);
@@ -2034,7 +2034,7 @@ static unsigned long long flip_H8(const unsigned long long P, const unsigned lon
  * @param O opponent's disc pattern.
  * @return flipped disc pattern.
  */
-static unsigned long long flip_pass(const unsigned long long P, const unsigned long long O)
+static u64 flip_pass(const u64 P, const u64 O)
 {
 	(void) P; // useless code to shut-up compiler warning
 	(void) O;
@@ -2043,7 +2043,7 @@ static unsigned long long flip_pass(const unsigned long long P, const unsigned l
 
 
 /** Array of functions to compute flipped discs */
-unsigned long long (*flip[])(const unsigned long long, const unsigned long long) = {
+u64 (*flip[])(const u64, const u64) = {
 	flip_A1, flip_B1, flip_C1, flip_D1,
 	flip_E1, flip_F1, flip_G1, flip_H1,
 	flip_A2, flip_B2, flip_C2, flip_D2,

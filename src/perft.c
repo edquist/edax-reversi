@@ -24,11 +24,11 @@
  * Gathered statistiscs
  */
 typedef struct {
-	unsigned long long n_moves;  /*< move number */
-	unsigned long long n_draws;  /*< number of draws */
-	unsigned long long n_losses; /*< number of losses */
-	unsigned long long n_wins;   /*< number of wins */
-	unsigned long long n_passes; /*< number of passes */
+	u64 n_moves;  /*< move number */
+	u64 n_draws;  /*< number of draws */
+	u64 n_losses; /*< number of losses */
+	u64 n_wins;   /*< number of wins */
+	u64 n_passes; /*< number of passes */
 	unsigned int min_mobility;   /*< min mobility */
 	unsigned int max_mobility;   /*< max mobility */
 } GameStatistics;
@@ -63,7 +63,7 @@ void game_statistics_cumulate(GameStatistics *global, const GameStatistics *loca
 static void count_game(const Board *board, const int depth, GameStatistics *global_stats)
 {
 	GameStatistics stats = GAME_STATISTICS_INIT;
-	unsigned long long moves;
+	u64 moves;
 	int x;
 	Board next[1];
 
@@ -107,7 +107,7 @@ static void count_game(const Board *board, const int depth, GameStatistics *glob
 void count_games(const Board *board, const int depth)
 {
 	int i;
-	unsigned long long t, n;
+	u64 t, n;
 	GameStatistics stats;
 
 	board_print(board, BLACK, stdout);
@@ -141,7 +141,7 @@ void count_games(const Board *board, const int depth)
 
 static void estimate_game(const Board *board, const int depth, Random *r, double *n)
 {
-	unsigned long long moves;
+	u64 moves;
 	int x, i, j, k;
 	Board next[1];
 
@@ -177,7 +177,7 @@ static void estimate_game(const Board *board, const int depth, Random *r, double
 void estimate_games(const Board *board, const long long n)
 {
 	int i, j;
-	unsigned long long t;
+	u64 t;
 	double x[128], m[128], s[128], em[128], es[128], en[128];
 	double M, S, EM, ES;
 	Random r;
@@ -236,9 +236,9 @@ void estimate_games(const Board *board, const long long n)
  * @param n test counter.
  */
 
-static void test_mobility(const Board *board, const int ply, Random *r, int *move, int *max_mobility, int *max_empties, const unsigned long long n)
+static void test_mobility(const Board *board, const int ply, Random *r, int *move, int *max_mobility, int *max_empties, const u64 n)
 {
-	unsigned long long moves;
+	u64 moves;
 	int x, i, k, e;
 	Board next[1];
 
@@ -287,13 +287,13 @@ static void test_mobility(const Board *board, const int ply, Random *r, int *mov
  * @param board
  * @param t time to test
  */
-void seek_highest_mobility(const Board *board, const unsigned long long t)
+void seek_highest_mobility(const Board *board, const u64 t)
 {
 	int max_mobility = get_mobility(board->player, board->opponent);
 	int max_empties = board_count_empties(board);
 	const long long t_max = t * 1000 + cpu_clock();
 	int i;
-	unsigned long long n = 0;
+	u64 n = 0;
 	const int bucket = 10000;
 	int x[128];
 	Random r;
@@ -325,8 +325,8 @@ typedef struct {
 	GameHash *array; /**< array of hash entries */
 	int size;          /**< size */
     int mask;          /**< mask */
-	unsigned long long n_tries; /**< n_tries */
-	unsigned long long n_hits;  /**< n_tries */
+	u64 n_tries; /**< n_tries */
+	u64 n_hits;  /**< n_tries */
 } GameHashTable;	
 
 /**
@@ -428,7 +428,7 @@ static bool gamehash_fail(GameHashTable *hash, const Board *b, const int depth, 
 static void quick_count_game_6x6(GameHashTable *hash, const Board *board, const int depth, GameStatistics *global_stats)
 {
 	GameStatistics stats = GAME_STATISTICS_INIT;
-	unsigned long long moves;
+	u64 moves;
 	int x;
 	Board next[1];
 
@@ -475,7 +475,7 @@ static void quick_count_game_6x6(GameHashTable *hash, const Board *board, const 
 static void quick_count_game(GameHashTable *hash, const Board *board, const int depth, GameStatistics *global_stats)
 {
 	GameStatistics stats = GAME_STATISTICS_INIT;
-	unsigned long long moves;
+	u64 moves;
 	int x;
 	Board next[1];
 
@@ -524,7 +524,7 @@ void quick_count_games(const Board *board, const int depth, const int size)
 	long long t;
 	GameHashTable hash;
 	GameStatistics stats;
-	unsigned long long n;
+	u64 n;
 
 	board_print(board, BLACK, stdout);
 	puts("\n  ply           moves        passes          wins         draws        losses    mobility        time   speed");
@@ -664,7 +664,7 @@ static void boardcache_delete(BoardCache *hash)
 static bool boardcache_undone(BoardCache *hash, const Board *b)
 {
 	Board u;
-	unsigned long long h;
+	u64 h;
 	int i;
 
 	board_unique(b, &u);
@@ -682,7 +682,7 @@ static bool boardcache_undone(BoardCache *hash, const Board *b)
 static void boardcache_append(BoardCache *hash, const Board *b)
 {
 	Board u;
-	unsigned long long h;
+	u64 h;
 	int i, j, k, l;
 	
 	board_unique(b, &u);
@@ -739,7 +739,7 @@ bool positionhash_append(PositionHash *hash, const Board *b)
 {
 	Board u;
 	CBoard c;
-	unsigned long long h;
+	u64 h;
 
 	board_unique(b, &u);
 	compact_board(&u, &c);
@@ -754,10 +754,10 @@ bool positionhash_append(PositionHash *hash, const Board *b)
  * @param board position.
  * @param depth depth.
  */
-static unsigned long long count_position(PositionHash *hash, BoardCache *cache, const Board *board, const int depth)
+static u64 count_position(PositionHash *hash, BoardCache *cache, const Board *board, const int depth)
 {
-	unsigned long long nodes = 0;
-	unsigned long long moves;
+	u64 nodes = 0;
+	u64 moves;
 	int x;
 	Board next[1];
 
@@ -787,10 +787,10 @@ static unsigned long long count_position(PositionHash *hash, BoardCache *cache, 
  * @param board position.
  * @param depth depth.
  */
-static unsigned long long count_position_6x6(PositionHash *hash, BoardCache *cache, const Board *board, const int depth)
+static u64 count_position_6x6(PositionHash *hash, BoardCache *cache, const Board *board, const int depth)
 {
-	unsigned long long nodes = 0;
-	unsigned long long moves;
+	u64 nodes = 0;
+	u64 moves;
 	int x;
 	Board next[1];
 
@@ -822,7 +822,7 @@ static unsigned long long count_position_6x6(PositionHash *hash, BoardCache *cac
 void count_positions(const Board *board, const int depth, const int size)
 {
 	int i;
-	unsigned long long n, c;
+	u64 n, c;
 	long long t;
 	PositionHash hash;
 	BoardCache cache;
@@ -855,9 +855,9 @@ void count_positions(const Board *board, const int depth, const int size)
  * @param shape input Shape.
  * @return 
  */
-unsigned long long shape_unique(unsigned long long shape)
+u64 shape_unique(u64 shape)
 {
-	unsigned long long sym, unique;
+	u64 sym, unique;
 	int i;
 
 	unique = shape;
@@ -878,9 +878,9 @@ unsigned long long shape_unique(unsigned long long shape)
  * @param shape Board shape.
  * @return The hash code of the bitboard.
  */
-unsigned long long shape_get_hash_code(const unsigned long long shape)
+u64 shape_get_hash_code(const u64 shape)
 {
-	unsigned long long h;
+	u64 h;
 	const unsigned char *p = (const unsigned char*)&shape;
 
 	h  = hash_rank[0][p[0]];
@@ -900,7 +900,7 @@ unsigned long long shape_get_hash_code(const unsigned long long shape)
  * Array of shape.
  */
 typedef struct {
-	unsigned long long *item; /**< dynamic array */
+	u64 *item; /**< dynamic array */
 	int n;       /**< number of items in the array */
 	int size;    /**< capacity of the array */
 } ShapeArray;
@@ -929,7 +929,7 @@ static void shapearray_delete(ShapeArray *array)
  * @param array Array of shapes.
  * @param shape Shape.
  */
-static bool shapearray_append(ShapeArray *array, const unsigned long long shape)
+static bool shapearray_append(ShapeArray *array, const u64 shape)
 {
 	int i;
 
@@ -938,7 +938,7 @@ static bool shapearray_append(ShapeArray *array, const unsigned long long shape)
 	}
 
 	if (array->size == array->n) {
-		array->item = (unsigned long long*) realloc(array->item, (array->size += 1) * sizeof (unsigned long long));
+		array->item = (u64*) realloc(array->item, (array->size += 1) * sizeof (u64));
 		if (array->item == NULL) fatal_error("Cannot re-allocate board array.\n");
 	}
 	array->item[array->n++] = shape;
@@ -991,7 +991,7 @@ static void shapehash_delete(ShapeHash *hash)
  */
 static bool shapehash_append(ShapeHash *hash, const Board *b)
 {
-	unsigned long long u;
+	u64 u;
 
 	u = shape_unique(b->player | b->opponent);
 	return shapearray_append(hash->array + (shape_get_hash_code(u) & hash->mask), u);
@@ -1004,10 +1004,10 @@ static bool shapehash_append(ShapeHash *hash, const Board *b)
  * @param board shape.
  * @param depth depth.
  */
-static unsigned long long count_shape(ShapeHash *hash, BoardCache *cache, const Board *board, const int depth)
+static u64 count_shape(ShapeHash *hash, BoardCache *cache, const Board *board, const int depth)
 {
-	unsigned long long nodes = 0;
-	unsigned long long moves;
+	u64 nodes = 0;
+	u64 moves;
 	int x;
 	Board next[1];
 
@@ -1039,10 +1039,10 @@ static unsigned long long count_shape(ShapeHash *hash, BoardCache *cache, const 
  * @param board Board.
  * @param depth depth.
  */
-static unsigned long long count_shape_6x6(ShapeHash *hash, BoardCache *cache, const Board *board, const int depth)
+static u64 count_shape_6x6(ShapeHash *hash, BoardCache *cache, const Board *board, const int depth)
 {
-	unsigned long long nodes = 0;
-	unsigned long long moves;
+	u64 nodes = 0;
+	u64 moves;
 	int x;
 	Board next[1];
 
@@ -1077,7 +1077,7 @@ static unsigned long long count_shape_6x6(ShapeHash *hash, BoardCache *cache, co
 void count_shapes(const Board *board, const int depth, const int size)
 {
 	int i;
-	unsigned long long n, c;
+	u64 n, c;
 	long long t;
 	ShapeHash hash;
 	BoardCache cache;
@@ -1113,8 +1113,8 @@ void count_shapes(const Board *board, const int depth, const int size)
  * @param line line to reach the target position
  */
 bool seek_position(const Board *target, const Board *board, Line *line) {
- 	const unsigned long long mask = target->opponent | target->player;
- 	unsigned long long moves;
+ 	const u64 mask = target->opponent | target->player;
+ 	u64 moves;
  	int x;
  	Board next[1];
  	

@@ -876,7 +876,7 @@ void game_save_sgf(const Game *game, FILE *f, const bool multiline)
 	int i;
 	time_t t = time(NULL);
 	struct tm *date = localtime(&t);
-	unsigned long long black, white;
+	u64 black, white;
 	const int score = game_score(game);
 
 	// game info
@@ -1497,7 +1497,7 @@ void game_export_svg(const Game *game, FILE *f)
 void game_rand(Game *game, int n_ply, Random *r)
 {
 	Move move[1];
-	unsigned long long moves;
+	u64 moves;
 	int ply;
 	Board board[1];
 

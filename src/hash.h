@@ -33,7 +33,7 @@ typedef struct HashData {
 
 /** Hash  : item stored in the hash table*/
 typedef struct Hash {
-	HASH_COLLISIONS(unsigned long long key;)
+	HASH_COLLISIONS(u64 key;)
 	Board board;
 	HashData data;
 } Hash;
@@ -48,7 +48,7 @@ typedef struct HashTable {
 	void *memory;                 /*!< allocated memory */
 	Hash *hash;  				  /*!< hash table */
 	HashLock *lock;               /*!< table with locks */
-	unsigned long long hash_mask; /*!< a bit mask for hash entries */
+	u64 hash_mask; /*!< a bit mask for hash entries */
 	unsigned int lock_mask;       /*!< a bit mask for lock entries */
 	int n_hash;                   /*!< hash table size */
 	int n_lock;                   /*!< number of locks */
@@ -58,22 +58,22 @@ typedef struct HashTable {
 /* declaration */
 void hash_code_init(void);
 void hash_move_init(void);
-void hash_init(HashTable*, const unsigned long long);
+void hash_init(HashTable*, const u64);
 void hash_cleanup(HashTable*);
 void hash_clear(HashTable*);
 void hash_free(HashTable*);
-void hash_store(HashTable*, const Board*, const unsigned long long, const int, const int, const int, const int, const int, const int, const int);
-void hash_force(HashTable*, const Board*, const unsigned long long, const int, const int, const int, const int, const int, const int, const int);
-bool hash_get(HashTable*, const Board*, const unsigned long long, HashData *);
+void hash_store(HashTable*, const Board*, const u64, const int, const int, const int, const int, const int, const int, const int);
+void hash_force(HashTable*, const Board*, const u64, const int, const int, const int, const int, const int, const int, const int);
+bool hash_get(HashTable*, const Board*, const u64, HashData *);
 void hash_copy(const HashTable*, HashTable*);
 void hash_print(const HashData*, FILE*);
-void hash_feed(HashTable*, const Board*, const unsigned long long, const int, const int, const int, const int, const int);
-void hash_exclude_move(HashTable*, const Board*, const unsigned long long, const int);
+void hash_feed(HashTable*, const Board*, const u64, const int, const int, const int, const int, const int);
+void hash_exclude_move(HashTable*, const Board*, const u64, const int);
 extern unsigned int writeable_level(HashData *data);
 
 extern const HashData HASH_DATA_INIT;
-extern unsigned long long hash_rank[16][256];
-extern unsigned long long hash_move[64][60];
+extern u64 hash_rank[16][256];
+extern u64 hash_move[64][60];
 
 #endif
 

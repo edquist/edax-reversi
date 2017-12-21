@@ -481,7 +481,7 @@ void search_setup(Search *search)
 	};
 
 	Board *board = search->board;
-	unsigned long long E;
+	u64 E;
 
 	// init empties
 	search->n_empties = 0;
@@ -877,7 +877,7 @@ void search_get_movelist(const Search *search, MoveList *movelist)
 	Move *previous = movelist->move;
 	Move *move = movelist->move + 1;
 	const Board *board = search->board;
-	unsigned long long moves = get_moves(board->player, board->opponent);
+	u64 moves = get_moves(board->player, board->opponent);
 	register int x;
 
 	foreach_bit(x, moves) {
@@ -1070,7 +1070,7 @@ long long search_time(Search *search)
  * @param search  Search.
  * @return node count.
  */
-unsigned long long search_count_nodes(Search *search)
+u64 search_count_nodes(Search *search)
 {
 	return search->n_nodes + search->child_nodes;
 }
@@ -1261,14 +1261,14 @@ bool search_TC_NWS(HashData *data, const int depth, const int selectivity, const
  * @param score Score to return in case a cutoff is found.
  * @return 'true' if a cutoff is found, 'false' otherwise.
  */
-bool search_ETC_NWS(Search *search, MoveList *movelist, unsigned long long hash_code, const int depth, const int selectivity, const int alpha, int *score)
+bool search_ETC_NWS(Search *search, MoveList *movelist, u64 hash_code, const int depth, const int selectivity, const int alpha, int *score)
 {
 	if (USE_ETC && depth > ETC_MIN_DEPTH) {
 
 		Move *move;
 		Board next[1];
 		HashData etc[1];
-		unsigned long long etc_hash_code;
+		u64 etc_hash_code;
 		HashTable *hash_table = search->hash_table;
 		const int etc_depth = depth - 1;
 		const int beta = alpha + 1;

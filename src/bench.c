@@ -20,17 +20,17 @@
  *
  * @return a CPU clock tick.
  */
-static unsigned long long click()
+static u64 click()
 {
 #if defined(USE_GAS_X64)
 
 	unsigned int a, d;
 	__asm__ volatile (
 		"rdtsc" : "=a" (a), "=d" (d));
-	return a | (((unsigned long long)d) << 32);
+	return a | (((u64)d) << 32);
 
 #elif defined(USE_GAS_X86)
-	unsigned long long a;
+	u64 a;
 	__asm__ volatile (
 		"rdtsc" : "=A" (a));
 	return a;
@@ -53,7 +53,7 @@ static void bench_move_generator()
 	int i, x;
 	const int N_WARMUP = 1000;
 	const int N_REPEAT = 1000000;
-	unsigned long long c, overhead;
+	u64 c, overhead;
 	double t, t_mean, t_var, t_min, t_max;
 
 	c = -click();
@@ -115,7 +115,7 @@ static void bench_count_last_flip()
 	int i, x;
 	const int N_WARMUP = 1000;
 	const int N_REPEAT = 1000000;
-	unsigned long long c, overhead;
+	u64 c, overhead;
 	double t, t_mean, t_var, t_min, t_max;
 
 	c = -click();
@@ -177,7 +177,7 @@ static void bench_board_score_1()
 	int i, x;
 	const int N_WARMUP = 1000;
 	const int N_REPEAT = 1000000;
-	unsigned long long c, overhead;
+	u64 c, overhead;
 	double t, t_mean, t_var, t_min, t_max;
 
 
@@ -240,7 +240,7 @@ static void bench_mobility()
 	int i, x, v;
 	const int N_WARMUP = 1000;
 	const int N_REPEAT = 1000000;
-	unsigned long long c, overhead;
+	u64 c, overhead;
 	double t, t_mean, t_var, t_min, t_max;
 
 	board_set(&board, b);
@@ -314,7 +314,7 @@ static void bench_stability()
 	int i, x, v;
 	const int N_WARMUP = 1000;
 	const int N_REPEAT = 1000000;
-	unsigned long long c, overhead;
+	u64 c, overhead;
 	double t, t_mean, t_var, t_min, t_max;
 
 	board_init(&board);

@@ -56,7 +56,7 @@ void wthor_init(WthorBase*);
 bool wthor_load(WthorBase*, const char*);
 bool wthor_save(WthorBase*, const char*);
 void wthor_test(const char*, struct Search*);
-void wthor_eval(const char*, struct Search*, unsigned long long histogram[129][65]);
+void wthor_eval(const char*, struct Search*, u64 histogram[129][65]);
 void wthor_edaxify(const char*);
 
 #define foreach_wthorgame(wgame, wbase) \

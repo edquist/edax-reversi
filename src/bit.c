@@ -15,7 +15,7 @@
 #include "util.h"
 
 /** coordinate to bit table converter */
-const unsigned long long X_TO_BIT[] = {
+const u64 X_TO_BIT[] = {
 	0x0000000000000001ULL, 0x0000000000000002ULL, 0x0000000000000004ULL, 0x0000000000000008ULL,
 	0x0000000000000010ULL, 0x0000000000000020ULL, 0x0000000000000040ULL, 0x0000000000000080ULL,
 	0x0000000000000100ULL, 0x0000000000000200ULL, 0x0000000000000400ULL, 0x0000000000000800ULL,
@@ -36,7 +36,7 @@ const unsigned long long X_TO_BIT[] = {
 };
 
 /** Conversion array: neighbour bits */
-const unsigned long long NEIGHBOUR[] = {
+const u64 NEIGHBOUR[] = {
 	0x0000000000000302ULL, 0x0000000000000705ULL, 0x0000000000000e0aULL, 0x0000000000001c14ULL,
 	0x0000000000003828ULL, 0x0000000000007050ULL, 0x000000000000e0a0ULL, 0x000000000000c040ULL,
 	0x0000000000030203ULL, 0x0000000000070507ULL, 0x00000000000e0a0eULL, 0x00000000001c141cULL,
@@ -57,7 +57,7 @@ const unsigned long long NEIGHBOUR[] = {
 };
 
 /**
- * @brief Count the number of bits set to one in an unsigned long long.
+ * @brief Count the number of bits set to one in an u64.
  *
  * This is the classical popcount function.
  * Since 2007, it is part of the instruction set of some modern CPU,
@@ -69,7 +69,7 @@ const unsigned long long NEIGHBOUR[] = {
  * @param b 64-bit integer to count bits of.
  * @return the number of bits set.
  */
-int bit_count(unsigned long long b)
+int bit_count(u64 b)
 {
 #if defined(POPCOUNT)
 
@@ -85,9 +85,9 @@ int bit_count(unsigned long long b)
 // MMX does not help much here :-(
 #elif defined (USE_GAS_MMX)
  
-	const unsigned long long M55 = 0x5555555555555555ULL;
-	const unsigned long long M33 = 0x3333333333333333ULL;
-	const unsigned long long M0F = 0x0F0F0F0F0F0F0F0FULL;
+	const u64 M55 = 0x5555555555555555ULL;
+	const u64 M33 = 0x3333333333333333ULL;
+	const u64 M0F = 0x0F0F0F0F0F0F0F0FULL;
 	int count;
 
 	__asm__ volatile(
@@ -119,7 +119,7 @@ int bit_count(unsigned long long b)
 
 #else
 
-	register unsigned long long c = b
+	register u64 c = b
 		- ((b >> 1) & 0x7777777777777777ULL)
 		- ((b >> 2) & 0x3333333333333333ULL)
 		- ((b >> 3) & 0x1111111111111111ULL);
@@ -140,7 +140,7 @@ int bit_count(unsigned long long b)
  * @param v 64-bit integer to count bits of.
  * @return the number of bit set, counting the corners twice.
  */
-int bit_weighted_count(const unsigned long long v)
+int bit_weighted_count(const u64 v)
 {
 #if defined(POPCOUNT)
 
@@ -148,7 +148,7 @@ int bit_weighted_count(const unsigned long long v)
 
 #else
 
-	register unsigned long long b;
+	register u64 b;
 	b  = v - ((v >> 1) & 0x1555555555555515ULL) + (v & 0x0100000000000001ULL);
 	b  = ((b >> 2) & 0x3333333333333333ULL) + (b & 0x3333333333333333ULL);
 	b  = ((b >> 4) + b) & 0x0f0f0f0f0f0f0f0fULL;
@@ -170,7 +170,7 @@ int bit_weighted_count(const unsigned long long v)
  * @param b 64-bit integer.
  * @return the index of the first bit set.
  */
-int first_bit(unsigned long long b)
+int first_bit(u64 b)
 {
 #if defined(USE_GAS_X64)
 
@@ -245,7 +245,7 @@ int first_bit(unsigned long long b)
  * @param b 64-bit integer.
   * @return the index of the next bit set.
  */
-int next_bit(unsigned long long *b)
+int next_bit(u64 *b)
 {
 	*b &= *b - 1;
 	return first_bit(*b);
@@ -261,7 +261,7 @@ int next_bit(unsigned long long *b)
  * @param b 64-bit integer.
  * @return the index of the last bit set.
  */
-int last_bit(unsigned long long b)
+int last_bit(u64 b)
 {
 #if defined(USE_GAS_X64)
 
@@ -338,13 +338,13 @@ int last_bit(unsigned long long b)
 }
 
 /**
- * @brief Transpose the unsigned long long (symetry % A1-H8 diagonal).
- * @param b An unsigned long long
- * @return The transposed unsigned long long.
+ * @brief Transpose the u64 (symetry % A1-H8 diagonal).
+ * @param b An u64
+ * @return The transposed u64.
  */
-unsigned long long transpose(unsigned long long b)
+u64 transpose(u64 b)
 {
-	unsigned long long t;
+	u64 t;
 
 	t = (b ^ (b >> 7)) & 0x00aa00aa00aa00aaULL;
 	b = b ^ t ^ (t << 7);
@@ -357,11 +357,11 @@ unsigned long long transpose(unsigned long long b)
 }
 
 /**
- * @brief Mirror the unsigned long long (exchange the lines A - H, B - G, C - F & D - E.).
- * @param b An unsigned long long
- * @return The mirrored unsigned long long.
+ * @brief Mirror the u64 (exchange the lines A - H, B - G, C - F & D - E.).
+ * @param b An u64
+ * @return The mirrored u64.
  */
-unsigned long long vertical_mirror(unsigned long long b)
+u64 vertical_mirror(u64 b)
 {
 	b = ((b >>  8) & 0x00FF00FF00FF00FFULL) | ((b <<  8) & 0xFF00FF00FF00FF00ULL);
 	b = ((b >> 16) & 0x0000FFFF0000FFFFULL) | ((b << 16) & 0xFFFF0000FFFF0000ULL);
@@ -370,11 +370,11 @@ unsigned long long vertical_mirror(unsigned long long b)
 }
 
 /**
- * @brief Mirror the unsigned long long (exchange the line 1 - 8, 2 - 7, 3 - 6 & 4 - 5).
- * @param b An unsigned long long.
- * @return The mirrored unsigned long long.
+ * @brief Mirror the u64 (exchange the line 1 - 8, 2 - 7, 3 - 6 & 4 - 5).
+ * @param b An u64.
+ * @return The mirrored u64.
  */
-unsigned long long horizontal_mirror(unsigned long long b)
+u64 horizontal_mirror(u64 b)
 {
   b = ((b >> 1) & 0x5555555555555555ULL) | ((b << 1) & 0xAAAAAAAAAAAAAAAAULL);
   b = ((b >> 2) & 0x3333333333333333ULL) | ((b << 2) & 0xCCCCCCCCCCCCCCCCULL);
@@ -408,11 +408,11 @@ unsigned int bswap_int(unsigned int i)
 /**
  * @brief Get a random set bit index.
  *
- * @param b The unsigned long long.
+ * @param b The u64.
  * @param r The pseudo-number generator.
  * @return a random bit index, or -1 if b value is zero.
  */
-int get_rand_bit(unsigned long long b, Random *r)
+int get_rand_bit(u64 b, Random *r)
 {
 	int n = bit_count(b), x;
 
@@ -425,14 +425,14 @@ int get_rand_bit(unsigned long long b, Random *r)
 }
 
 /**
- * @brief Print an unsigned long long as a board.
+ * @brief Print an u64 as a board.
  *
  * Write a 64-bit long number as an Othello board.
  *
- * @param b The unsigned long long.
+ * @param b The u64.
  * @param f Output stream.
  */
-void bitboard_write(const unsigned long long b, FILE *f)
+void bitboard_write(const u64 b, FILE *f)
 {
 	int i, j, x;
 	const char *color = ".X";
