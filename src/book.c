@@ -489,9 +489,8 @@ static int position_get_moves(const Position *position, const Board *board, Move
 	Board sym[1];
 	int i, x, s;
 
-	for (s = 0; s < 8; ++s) {
-		board_symetry(position->board, s, sym);
-
+	*sym = *position->board;
+	foreach_board_symetry(s, *sym) {
 		if (board_equal(sym, board)) {
 			for (i = 0; i < position->n_link; ++i) {
 				x = symetry(position->link[i].move, s);

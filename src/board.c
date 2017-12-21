@@ -127,6 +127,20 @@ static const unsigned long long H1_H8[256] = {
 	0x8080808080000000ULL, 0x8080808080000080ULL, 0x8080808080008000ULL, 0x8080808080008080ULL, 0x8080808080800000ULL, 0x8080808080800080ULL, 0x8080808080808000ULL, 0x8080808080808080ULL,
 };
 
+/** function sequence for generating symetries */
+unsigned long long (*const symetry_op_sequence[8])(unsigned long long) = {
+            horizontal_mirror, vertical_mirror, transpose
+                             , vertical_mirror,
+            horizontal_mirror, vertical_mirror, transpose
+};
+
+/** corresponding symetry number index */
+const int symetry_op_idx[8] = {
+                            1,         3,       7
+                             ,         5,
+                            4,         6,       2
+};
+
 /**
  * @brief Swap players.
  *
@@ -355,9 +369,8 @@ int board_unique(const Board *board, Board *unique)
 
 	assert(board != unique);
 
-	*unique = *board;
-	for (i = 1; i < 8; ++i) {
-		board_symetry(board, i, &sym);
+	sym = *unique = *board;
+	foreach_board_symetry(i, sym) {
 		if (board_compare(&sym, unique) < 0) {
 			*unique = sym;
 			s = i;

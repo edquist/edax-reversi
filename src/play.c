@@ -1152,8 +1152,8 @@ bool play_force_go(Play *play, Move *move)
 
 		board_unique(play->board, unique);
 		if (board_equal(unique, play->force.unique + play->force.i_move)) {
-			for (s = 1; s < 8; ++s) {
-				board_symetry(play->force.real + play->force.i_move, s, sym);
+			*sym = play->force.real[play->force.i_move];
+			foreach_board_symetry(s, *sym) {
 				if (board_equal(play->board, sym)) {
 					x = symetry(play->force.move[play->force.i_move].x, s);
 					board_get_move(play->board, x, move);
