@@ -48,6 +48,9 @@ enum {
 extern const unsigned long long X_TO_BIT[];
 extern const unsigned long long NEIGHBOUR[];
 
+extern unsigned long long (*const symetry_op_sequence[8])(unsigned long long);
+extern const int symetry_op_idx[8];
+
 /** infinite score: a huge value unreachable as a score and fitting in a char */
 #define SCORE_INF 127
 
