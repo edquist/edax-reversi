@@ -340,22 +340,26 @@ void board_symetry(const Board *board, const int s, Board *sym)
 	board_check(sym);
 }
 
-#define DW0(xxx) do { xxx; } while (0)
-#define BSOM(sym,op,m) DW0((sym)->m = (op)((sym)->m))
-#define BSO(sym,op)    DW0( BSOM(sym,op,player); \
-			    BSOM(sym,op,opponent); \
-			    board_check(sym) )
+static
+unsigned long long (*const symetry_op_sequence[8])(unsigned long long) = {
+            horizontal_mirror, vertical_mirror, transpose
+                             , vertical_mirror,
+            horizontal_mirror, vertical_mirror, transpose
+};
 
-#define BSCMP(s,i,sym,unique,op) DW0( \
-	BSO(&(sym),op);               \
-	if (board_compare(&sym, unique) < 0) { *unique = sym; s = i; } )
+const int symetry_op_idx[8] = {
+                            1,         3,       7
+                             ,         5,       
+                            4,         6,       2
+};
 
-#define BXO(i,op) BSCMP(s,i,sym,unique,op)
-#define BXT(i) BXO(i,transpose)
-#define BXV(i) BXO(i,vertical_mirror)
-#define BXH(i) BXO(i,horizontal_mirror)
+#define foreach_board_symetry(idx, sym)                            \
+    for (int _i_ = 0; _i_ < 8 && (                                 \
+        (idx) = symetry_op_idx[_i_],                               \
+        (sym).player = symetry_op_sequence[_i_]((sym).player),     \
+        (sym).opponent = symetry_op_sequence[_i_]((sym).opponent), \
+        board_check(&(sym)), true); ++_i_)
 
-// really want a for_each_board_symmetry()
 
 /**
  * @brief unique board
@@ -368,28 +372,21 @@ void board_symetry(const Board *board, const int s, Board *sym)
 int board_unique(const Board *board, Board *unique)
 {
 	Board sym;
-	int s = 0;
+	int i, s = 0;
 
 	assert(board != unique);
 
 	sym = *unique = *board;
-
-	BXH(1); BXV(3); BXT(7);
-		BXV(5);
-	BXH(4); BXV(6); BXT(2);
+	foreach_board_symetry(i, sym) {
+		if (board_compare(&sym, unique) < 0) {
+			*unique = sym;
+			s = i;
+		}
+	}
 
 	board_check(unique);
 	return s;
 }
-
-#undef DW0
-#undef BSOM
-#undef BSO
-#undef BSCMP
-#undef BXO
-#undef BXT
-#undef BXV
-#undef BXH
 
 /** 
  * @brief Get a random board by playing random moves.
