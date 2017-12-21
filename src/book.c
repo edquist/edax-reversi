@@ -490,7 +490,7 @@ static int position_get_moves(const Position *position, const Board *board, Move
 	int i, x, s;
 
 	*sym = *position->board;
-	foreach_board_symetry(s, *sym) {
+	foreach_board_symetry(s, 0, *sym) {
 		if (board_equal(sym, board)) {
 			for (i = 0; i < position->n_link; ++i) {
 				x = symetry(position->link[i].move, s);

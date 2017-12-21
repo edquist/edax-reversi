@@ -71,12 +71,11 @@ int get_corner_stability(const unsigned long long);
 
 /* Loop over each board symetry for Board sym, setting symetry number idx. */
 
-#define foreach_board_symetry(idx, sym)                            \
-    for (int _i_ = 0; _i_ < 7 && (                                 \
-	(idx) = symetry_op_idx[_i_],                               \
+#define foreach_board_symetry(idx, idx0, sym)                      \
+    for (int _i_ = (idx0); ((idx) = symetry_op_idx[_i_]) != 0; (   \
 	(sym).player = symetry_op_sequence[_i_]((sym).player),     \
 	(sym).opponent = symetry_op_sequence[_i_]((sym).opponent), \
-	board_check(&(sym)), true); ++_i_)
+	board_check(&(sym)), ++_i_))
 
 #endif
 

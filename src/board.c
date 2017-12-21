@@ -370,7 +370,7 @@ int board_unique(const Board *board, Board *unique)
 	assert(board != unique);
 
 	sym = *unique = *board;
-	foreach_board_symetry(i, sym) {
+	foreach_board_symetry(i, 1, sym) {
 		if (board_compare(&sym, unique) < 0) {
 			*unique = sym;
 			s = i;
